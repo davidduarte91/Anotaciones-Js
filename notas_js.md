@@ -140,3 +140,60 @@ b -= 3; // 20 ("restamos el valor 3 y luego asignamos ese resultado a la variabl
 var totalDeuda = 2446;
 totalDeuda -= 345; // 2101
 ```
+### Asignación de multiplicación
+```javascript
+var c = 23;
+c = c * 2; //46
+
+c *= 2; // 46 (con asignación)
+
+// Otro ejemplo
+var salario = 45000;
+salario *= 5 // 225000
+```
+### Asignación de división
+```javascript
+var d = 39;
+d = d / 3; //13
+
+d /= 3; // 13
+
+// Ejemplo
+var salario = 45000;
+salario /= 2; // 22500
+```
+
+## Variables con cadenas de caracteres
+Los strings o cadenas se crean rodeando las palabras en comillas simples o dobles. 
+Todos los caracteres (espacios, símbolos, numero) que estén dentro de esas comillas son considerados parte de la cadena
+```javascript
+var nombre = "Alan";
+var apellido =  'Turing';
+```
+### Escapar comillas en cadenas de caracteres
+Hay un solo caso donde  conviene escoger comillas simples o dobles
+```javascript
+var miCadena = "Soy una cadena de caracteres "con comillas""; // error, "con comillas" queda fuera de la cadena
+
+// Para este caso se usa el "escape" que es la diagonal invertida (AltGr + ?). Ahora ya no habrá error e incluirá la palabra con comillas
+var miCadena = "Soy una cadena de caracteres \"con comillas\"";
+```
+### Cadenas de caracteres con comillas simples
+Para usar  menos caracteres intercalar comillas simples y dobles dentro de la cadena
+```javascript
+var miMeta;2
+miMeta = 'Aprender a programar con "freeCodeCamp"'
+```
+### Secuencias de escape
+- \'    Comilla simple
+- \"    Comilla doble
+- \\    Barra invertida (se usan dos para que se muestre la barra invertida)
+- \n    Línea nueva
+- \r    Retorno de carro
+- \t    Tabulación
+- \b    Retroceso
+- \f    Salto de página
+```javascript
+console.log("Estoy aprendiendo \\ JavaScript") // Estoy aprendiendo \ JavaScript
+```
+### Concatenar cadenas de caracteres
