@@ -197,3 +197,47 @@ miMeta = 'Aprender a programar con "freeCodeCamp"'
 console.log("Estoy aprendiendo \\ JavaScript") // Estoy aprendiendo \ JavaScript
 ```
 ### Concatenar cadenas de caracteres
+Podemos unir cadenas de caracteres
+```javascript
+var nombreCompleto = "Alan" + "Turing" // AlanTuring
+var nombreCompleto = "Alan" + " Turing" // Alan Turing (con espacio)
+var nombreCompleto = "Alan" + " " + "Turing" // Alan Turing (concatenando un espacio)
+```
+### Construir cadenas con variables
+Se puede utilizar la variable en cualquier parte
+```javascript
+var verbo = "programar";
+var mensaje = "Estoy aprendiendo a " + verbo; // Estoy aprendiendo a programar
+var mensaje = "Estoy aprendiendo a " + verbo + " con freeCodeCamp"; // Estoy aprendiendo a programar con freeCodeCamp
+```
+### Agregar variables a cadenas de caracteres
+Para concatenar cadenas que están guardadas en variables
+```javascript
+var mensajeCompleto = "Estoy aprendiendo a programar ";
+var parteFinal = "con freeCodeCamp";
+
+// Esto de abajo se guardará en la variable "mensajeCompleto"
+mensajeCompleto += parteFinal; // Estoy aprendiendo a programar con freeCodeCamp 
+```
+### Longitud de una cadena de caracteres
+Encontrar longitud de una cadena con *length*. Los espacios y símbolos también se suman
+```javascript
+var miCadena;
+miCadena = "A";
+console.log(miCadena.length) // 1
+
+miCadena = "JavaScript";
+console.log(miCadena.length) // 10
+
+miCadena = "¡Estoy aprendiendo a programar!";
+console.log(miCadena.length) // 31
+```
+### Notación de corchetes: Primer caracter
+Notación que nos permite acceder a los caraceteres individuales de una cadena. Comienza en cero
+Cadena:  J a v a S c r i p t
+Índices: 0 1 2 3 4 5 6 7 8 9
+```javascript
+var lenguajeDeProgramacion = "JavaScript";
+console.log(lenguajeDeProgramacion[0]); // J
+
+```
