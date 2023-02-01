@@ -234,10 +234,114 @@ console.log(miCadena.length) // 31
 ```
 ### Notación de corchetes: Primer caracter
 Notación que nos permite acceder a los caraceteres individuales de una cadena. Comienza en cero
+
 Cadena:  J a v a S c r i p t
 Índices: 0 1 2 3 4 5 6 7 8 9
 ```javascript
 var lenguajeDeProgramacion = "JavaScript";
 console.log(lenguajeDeProgramacion[0]); // J
 
+```
+### Inmutabilidad de cadenas de caracteres
+Una vez que definimos una cadena, no podemos cambiar sus elementos individuales, sus caracteres
+```javascript
+var miCadena = "Jola, Mundo"; // Jola, Mundo
+miCadena[0] = "H" // Error. No se puede cambiar un solo caracter
+
+// Lo que se hace es reasignar la cadena completa
+miCadena = "Hola, Mundo"; // Hola, Mundo
+```
+### Notación de corchetes: enésimo caracter
+Cómo usar los corchetes para acceder a cada elemento de la cadena
+```javascript
+var miCadena = "JavaScript";
+console.log(miCadena[1]) // a
+console.log(miCadena[2]) // v
+...
+console.log(miCadena[10]) // undefined (fuera del rango)
+```
+### Notación de corchetes: último caracter
+Para acceder al último caracter sin saber cuál es el último índice. El último índice siempre es la longitud de la cadena -1
+```javascript
+var miCadena = "JavaScript";
+console.log(miCadena[miCadena.length - 1]) // t (dentro de los corchetes ejecuta 10 - 1 = 9)
+```
+### Notación de corchetes:  De derecha a izquierda
+Para acceder al caracter último, penúltimo, antepenúltimo.
+El penúltimo índice es longitud  - 2
+```javascript
+var miCadena = "JavaScript"
+console.log(miCadena[miCadena.length - 2]) // p (el segundo caracter de derecha a izquierda)
+console.log(miCadena[miCadena.length - 3]) // i
+
+// también puedo guardar en una variable el número
+var n = 3;
+console.log(miCadena[miCadena.length - n]) // i
+```
+### Palabras en blanco (primer miniproyecto)
+```javascript
+let miSustantivo = "perro";
+let miAdjetivo = "negro";
+let miVerbo = "corrió";
+let miAdverbio = "rápidamente";
+
+/* Concatena las cadenas para crear una cadena que muestre un mensaje. Puedes cambiar los valores de las variables.
+
+Por ejemplo: El perro negro corrió rápidamente a la tienda.
+La bicicleta pequeña voló a la tienda lentamente.
+*/
+
+let palabrasEnBlanco = `El ${miSustantivo} ${miAdjetivo} ${miVerbo} a la tienda`
+console.log(palabrasEnBlanco) // El perro negro corrió rápidamente a la tienda.
+```
+## Arreglos (Arrays)
+Son estructuras de datos que nos permite almacenar valores en una misma estructura. Son muy parecidos a lo que consideraríamos una lista. Podemos acceder a cada elemento con su índice correspondiente
+```javascript
+var miArreglo = ["John", 24];
+console.log(miArreglo) // ["John", 24]
+
+var estudiantes = ["Nora", "Gino", "Emily", "Juan"];
+
+var notas = [95, 67, 89, 56]
+```
+### Arreglos anidados
+Los arreglos pueden contener cualquier tipo de datos, incluyendo otros arreglos
+```javascript
+var listaDeEstudiantes = [["Nora", 97], ["Gino", 78]] // arreglos anidados
+
+var listaDePrecios = [["Camisa", 5.67, "S134"], ["Celular", 250, S356], ["Zapatos", 36.7, "S678"]]
+
+var datos = [[3.4, 5.6, 3.2], [6.7, 4.5, 7.8], [5.6, 3.4, 7.8]]
+```
+### Acceder a los elementos de un arreglo
+Los arreglos comienzan desde el índice cero
+```javascript
+var miArreglo = [10, 20, 30];
+console.log(miArreglo[0]) // 10
+console.log(miArreglo[1]) // 20
+
+// ejemplo de cómo usarlo
+var suma = miArreglo[0] + miArreglo[1] + miArreglo[2]
+console.log(suma) // 60
+```
+### Modificar elementos de un arreglo
+A diferencia de las cadenas, en los arreglos sí se pueden modificar los elementos individuales
+```javascript
+var miArreglo = [10, 20, 30] 
+
+// cómo cambiar el primer valor
+miArreglo[0] = 40;
+console.log(miArreglo) // [40, 20, 30]
+
+miArreglo[1] = "Hola";
+console.log(miArreglo) // [40, 'Hola', 30]
+
+miArreglo[1] = [1, 2, 3]
+console.log(miArreglo) // [40, [1, 2, 3], 30]
+```
+### Acceder a arreglos multidimensionales
+También se pueden acceder a elementos que sean arreglos o arreglos anidados
+> Los arreglos que contienen arreglos anidados se consideran multidimensionales
+```javascript
+var miArreglo = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
