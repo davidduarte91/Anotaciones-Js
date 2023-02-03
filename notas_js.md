@@ -236,6 +236,7 @@ console.log(miCadena.length) // 31
 Notación que nos permite acceder a los caraceteres individuales de una cadena. Comienza en cero
 
 Cadena:  J a v a S c r i p t
+
 Índices: 0 1 2 3 4 5 6 7 8 9
 ```javascript
 var lenguajeDeProgramacion = "JavaScript";
@@ -344,4 +345,161 @@ También se pueden acceder a elementos que sean arreglos o arreglos anidados
 > Los arreglos que contienen arreglos anidados se consideran multidimensionales
 ```javascript
 var miArreglo = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+// Acceder al tercer elemento del segundo arreglo
+console.log(miArreglo[1][2]) // 6
+
+console.log(miArreglo[2][0]) // 7
 ```
+### .push
+Para agregar elementos al arreglo usamos el método push. Método es como una función que podemos llamar 
+```js
+var estaciones = ["Invierno", "Otoño", "Primavera"]
+estaciones.push("Verano")
+console.log(estaciones) // [ "Invierno", "Otoño", "Primavera", "Verano" ]
+```
+### .pop()
+Método para remover el último elemento de un arreglo. **Pop** además de remover el elemento, lo retorna y se puede guardar en una variable
+```js
+var estaciones;
+var estacion;
+estaciones = [ "Invierno", "Otoño", "Primavera", "Verano" ]
+var estacion = estaciones.pop()
+console.log(estaciones) // [ "Invierno", "Otoño", "Primavera" ]
+console.log(estacion) // Verano
+```
+### .shift()
+Método de arreglo que nos permite remover el primer elemento del arreglo
+```js
+var estaciones = [ "Invierno", "Otoño", "Primavera", "Verano" ]
+estaciones.shift();
+console.log(estaciones)
+```
+### .unshift()
+Agregar un elemento al principio del arreglo. Hay que especificar qué elemento quiero agregar
+```js
+var estaciones = ["Invierno", "Otoño", "Primavera"]
+estaciones.unshift("Verano"); // agregar al principio
+console.log(estaciones) // ["Verano", "Invierno", "Otoño", "Primavera"]
+```
+### Lista de compras - Segundo mini proyecto
+```js
+var miListaDeCompras = [["cereal", 3], ["leche", 2], ["galletas", 4], ["pan", 5], ["refresco", 7], ["pollo", 7]];
+
+// Cereal
+console.log(`Voy a comprar ${miListaDeCompras[0][1]} unidades de ${miListaDeCompras[0][0]}.`) // Voy a comprar 3 unidades de cereal.
+
+// Leche
+console.log(`Voy a comprar ${miListaDeCompras[1][1]} unidades de ${miListaDeCompras[1][0]}.`) // Voy a comprar 3 unidades de cereal.
+
+// Galletas
+console.log(`Voy a comprar ${miListaDeCompras[2][1]} unidades de ${miListaDeCompras[2][0]}.`) // Voy a comprar 4 unidades de galletas.
+
+// Pan
+console.log(`Voy a comprar ${miListaDeCompras[3][1]} unidades de ${miListaDeCompras[3][0]}.`) // Voy a comprar 4 unidades de galletas.
+
+// Refresco
+console.log(`Voy a comprar ${miListaDeCompras[4][1]} unidades de ${miListaDeCompras[4][0]}.`) // Voy a comprar 7 unidades de refresco.
+
+// Pollo
+console.log(`Voy a comprar ${miListaDeCompras[5][1]} unidades de ${miListaDeCompras[5][0]}.`) // Voy a comprar 7 unidades de pollo.
+```
+***
+## Funciones
+Con las funciones podemos escribir código que podemos reutilizar en nuestro programa
+```js
+function mostrarMensaje() {
+    console.log("Hola mundo")
+}
+// Podemos llamar a la función las veces que queramos
+mostrarMensaje(); // Hola mundo
+mostrarMensaje(); // Hola mundo
+mostrarMensaje(); // Hola mundo
+```
+### Argumentos
+Vamos a dar a la función la capacidad de recibir valores. Lo que va dentro del paréntesis son los *parámetros*. Lo que va dentro de las llaves es el *cuerpo* de la función
+```js
+function sumar(a, b) {
+    var suma = a + b; // asignamos la variable suma
+    console.log(`El resultado de ${a} + ${b} es: ${suma} `)
+}
+sumar(3, 5) // El resultado de 3 + 5 es: 8 
+sumar(13, 56) // El resultado de 13 + 56 es: 69 
+```
+> Los valores que pasamos a los parámetros se llaman *argumentos*
+
+También podemos asignar los valores a variables y éstas agregarlas como argumentos
+```js
+var x = 3;
+var y = 5;
+
+sumar(x, y) // El resultado de 3 + 5 es: 8
+```
+NO solo podemos pasar números 
+```js
+function concatenarTresCadenas(cadena1, cadena2, cadena3) {
+    console.log(${cadena1} ${cadena2} ${cadena3})
+}
+concatenarTresCadenas("Estoy", "aprendiendo", "a programar") // Estoy aprendiendo a programar
+```
+### Ámbito global
+No todas las variables pueden usarse en todas las distintas partes del programa.
+Hay dos tipo de variables: **Globales** y **Locales**
+
+- **Global**: Se puede usar en cualquier parte del programa porque está definida en el programa principal y no dentro de una función
+```js
+var miVariableGlobal = 5;
+console.log(miVariableGlobal); // 5
+
+// También podemos acceder a su valor dentro de una función
+function miFuncion() {
+    console.log(miVariableGlobal);
+}
+miFuncion() // 5
+```
+### Ámbito local
+Las variables locales son locales para una función. Se definen dentro de la función y solo se pueden usar ahi
+```js
+function miFuncion() {
+    var miVariableLocal = 4;
+    console.log(miVariableLocal)
+}
+miFuncion(); // 4 (se comprueba que dentro de la función está definida)
+
+// Intentando ingresar a la variable fuera de la función
+console.log(miVariableLocal); // ReferenceError: miVariableLocal no está definida
+```
+### Ámbito global vs. ámbito local
+Veremos qué sucede cuando se utiliza una varible local y otra global con el mismo nombre
+```js
+var miNombre = "Nora";
+
+function mostrarMiNombre() {
+    var miNombre = "Gino";
+    console.log(miNombre)
+}
+
+// llamando a la función
+mostrarMiNombre(); // Gino (la variable local tiene mayor prioridad dentro de la función)
+
+// llamando a la variable global
+console.log(miNombre) // Nora (usamos el valor de la variable global)
+```
+### Retornar un valor
+Las funciones pueden retornar un valor además de recibir valores. También tienen propiedades especiales para poder interactuar con el programa principal
+```js
+function sumar(a, b) {
+    return a + b; // con return se devuelve un valor
+}
+sumar(5, 3); // como se usa return no se mostrará el valor en la consola.
+console.log(sumar(5, 3)) // 8
+```
+### undefined
+Así como podemos retornar un valor específico de una función escribiéndolo esplícitamente con _return_, también podemos omitir esa sentencia. Podemos no retornar ningún valor de la función.
+
+Pero aún en ese caso la función va a retornar un valor por defecto
+```js
+function sumar(a, b) {
+    console.log(a + b); // no se está usando return
+}
+console.log(sumar(5, 3)) // undefined
