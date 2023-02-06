@@ -369,7 +369,7 @@ console.log(estaciones) // [ "Invierno", "Otoño", "Primavera" ]
 console.log(estacion) // Verano
 ```
 ### .shift()
-Método de arreglo que nos permite remover el primer elemento del arreglo
+Método de arreglo que nos permite remover el primer elemento del arreglo. También devuelve el valor eliminado
 ```js
 var estaciones = [ "Invierno", "Otoño", "Primavera", "Verano" ]
 estaciones.shift();
@@ -500,6 +500,77 @@ Así como podemos retornar un valor específico de una función escribiéndolo e
 Pero aún en ese caso la función va a retornar un valor por defecto
 ```js
 function sumar(a, b) {
-    console.log(a + b); // no se está usando return
+    console.log(a + b); // no se está usando return, pero aún así mostrará en consola el valor de la suma
 }
-console.log(sumar(5, 3)) // undefined
+console.log(sumar(5, 3)) 
+// 8 (cuando llamamos a la función)
+// undefined (luego el valor retornado por esa función se muestra en la consola, pero como no dice "return" no retorna nada)
+```
+Para que sí retorne
+```js
+function sumar(a, b) {
+    console.log(a + b);
+    return a + b;
+}
+
+console.log(sumar(5, 3))
+// 8
+// 8
+```
+### Asignar un valor retornado
+Cuando una función retorna un valor, podemos asignar ese valor a una variable y poder luego usar esa variable
+```js
+function sumar(a, b) {
+    return a + b;
+}
+
+sumar(5, 3) // en la consola no muestra nada y tampoco lo estamos asignando a ninguna variable
+
+// Ahora guardando en una variable
+var resultado = sumar(5, 3);
+console.lof(resultado) // 8
+```
+Otro ejemplo
+```js 
+function crearCadenaConMeta(lenguajeDeProgramacion) {
+    return "Mi meta es aprender " + lenguajeDeProgramacion;
+}
+var miMeta = crearCadenaConMeta("Javascript") // asignando a variable
+console.log(miMeta)
+```
+### Permanece en Fila - Ejercicio
+**Próximo en la fila**
+En informática una cola (queue) es una estructura de datos abstracta en la cual los elementos se mantienen en orden. Los nuevos elementos se pueden añadir al final de la cola y los elementos previos se retiran del principio de la cola.
+
+Define una función _proximoEnLaFila_ que tome un array (arreglo) y un número (elemento) como argumentos. Agrega el número al final del arreglo y luego elimina el primer elemento del arreglo. La función proximoEnLaFila debe retornar el elemento que fue removido.
+
+Mi resolución:
+```js
+function proximoEnLaFila (array, numero) {
+    array.push(numero); // agregar al final del arreglo
+    console.log(array) // [ 1, 2, 3, 4 ]
+    var removido;
+    removido = array.shift();
+    console.log(array) // [ 2, 3, 4 ]
+    return removido;
+}
+
+console.log(proximoEnLaFila([1,2,3], 4)) // 1
+```
+Resolución de freecodecamp
+```js
+function proximoEnLaFila(arr, elem) {
+    arr.push(elem); // agrega al final del arreglo
+    return arr.shift() // remueve el primer elemento
+}
+
+var miArreglo = [1, 2, 3, 4, 5];
+
+console.log(`Antes: ${JSON.stringify(miArreglo)}`) // Antes: [1,2,3,4,5]
+// Para ver el status del arreglo antes y después de llamar a la función
+
+console.log(proximoEnLaFila(miArreglo, 6)) // 1
+
+console.log(`Después: ${JSON.stringify(miArreglo)}`) // Después: [2,3,4,5,6]
+```
+> JSON.stringify: es útil para mostrar arreglos en la consola
