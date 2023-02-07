@@ -574,3 +574,98 @@ console.log(proximoEnLaFila(miArreglo, 6)) // 1
 console.log(`Después: ${JSON.stringify(miArreglo)}`) // Después: [2,3,4,5,6]
 ```
 > JSON.stringify: es útil para mostrar arreglos en la consola
+
+### Valores booleanos
+Son los valores `true` y `false`. Estos son muy útiles para condicionales, comparaciones de valores y cuando trabajemos con operadores lógicos
+
+### Operador de igualdad
+Se pueden comparar valores para ver si son o no iguales. Se puede hacer con el operador de igualdad
+```js
+console.log(5 == 5) // true
+console.log(6 == 5) // false
+console.log("Hola" == "Hola") // true
+console.log("Hola" == "JavaScript) // false
+console.log("Hola" == "hola") // false
+console.log([1, 2, 3] == [1, 2, 3]) // false (no comparar arreglos con este operador porque no compara los elementos del arreglo, sino que compara si los arreglos en la memoria representan el mismo objeto)
+console.log([1, 2, 3] == [4, 5, 6]) // false
+```
+### Operador de igualdad estricta
+Operador que nos permite comparar si ambos tipos de datos son los mismos. 
+
+Ver diferencia entre igualdad e igualdad estricta
+```js
+console.log(9 == 9) // true
+console.log(9 == "9") // true (antes de realizar la operación, los operadores se convierten a un tipo de dato común y por eso el resultado dice true)
+
+console.log(9 === 9) // true
+console.log(9 === "9") // false (solamente se comparan en base a su valor y tipo. No hace la conversión como en el otro caso)
+```
+### Practica cómo comparar valores
+Predecir cuál va a ser el valor de la comparación
+```js
+var a;
+var b;
+
+a = 5;
+b = 5;
+
+console.log(a == b); // true
+console.log(a === b) // true
+
+b = 8; // cambiando el valor
+
+console.log(a == b) // false
+console.log(a === b) // false
+
+b = "5";
+
+console.log(a == b) // true
+console.log(a === b) // false
+
+a =  "JavaScript";
+b = "JavaScript";
+
+console.log(a == b) // true
+console.log(a === b) // true
+```
+### Operador de desigualdad
+Este operador compara dos valores y retorna `true` si sus valores son distintos yn`false` si son iguales. Es lo opuesto al operador de igualdad.
+```js
+console.log(9 != 6) // true
+console.log(9 != 9) // false
+console.log("JavaScript" != "JavaScript") // false
+console.log([1, 2, 3] != [1, 2, 3]) // true (no compara en base a sus elementos sino a cómo están represantos como objetos en la memoria del dispositivo)
+```
+### Operador de desigualdad estricta
+Diferencia entre desigualdad y desigualdad estricta
+```js
+console.log(1 != "1") // false (por la conversión inicial, ambos son iguales)
+
+console.log(1 !== "1") // true (porque también compara el tipo)
+```
+### Operador "mayor que"
+Se utiliza el símbolo `>`
+```js
+console.log(6 > 5) // true
+console.log(3 > 10) // false
+
+// Js compara las cadenas según el orden alfabético
+console.log("B" > "A") // true (la letra B viene después de la A en el orden alfabético)
+console.log("ACB" > "ABC") // true (compara cada par y en la primera diferencia decide cual es mayor)
+
+console.log("AB" > "A") // true (xq tiene más caracteres)
+
+console.log("Mundo" > "Hola") // true (M viene después de H)
+console.log("M" > "H") // true
+
+var a = 15;
+var b = 7;
+console.log(a > b) // true
+console.log(b > a) // false
+```
+### Operador "mayor igual que"
+`>=` nos permite incluir el caso en que ambos operadores sean iguales
+```js
+console.log(5 > 5) // false (pregunta si 5 es estrictamente mayor que 5. No incluye el caso que 5 pueda ser igual a 5)
+console.log(5 >= 5) // true
+```
