@@ -669,3 +669,486 @@ console.log(b > a) // false
 console.log(5 > 5) // false (pregunta si 5 es estrictamente mayor que 5. No incluye el caso que 5 pueda ser igual a 5)
 console.log(5 >= 5) // true
 ```
+
+### Operador "menor que"
+`<` 
+```js
+console.log(5 < 6) // true
+console.log(10 < 3) // false
+console.log("A" < "B") // true
+console.log("ABC" < "ABC") // true
+
+var a = 15;
+var b = 7;
+
+console.log(a < b) //false
+console.log(b < a) // true
+```
+### Operador "menor igual que"
+`<=` incluye el caso en que ambos valores sean iguales
+```js
+console.log(5 < 5) // false
+console.log(5 <= 5) // true
+```
+### Operador lógico "and"
+`&&`  
+Los operadores lógicos nos permiten combinar distintas expresiones para formar condiciones un poco más elaboradas.
+
+Tabla de verdad del operador AND  
+Para: X && Y
+| X | Y | X && Y |
+| -- | -- | -- |
+| true | true | true |
+| true | false | false |
+| false | true | false |
+| false | false | false |
+
+La expresión es verdadera solo cuando ambos operandos son verdaderos  
+```js
+console.log(true && true) // true
+console.log(true && false) // false
+console.log(false && true) // false
+console.log(false && false) // false
+```
+```js
+var a = 8;
+
+console.log((a > 5) && (a < 10)) // true
+// true && true --> true
+```
+```js
+var a = 3;
+
+console.log((a > 5) && (a < 10)) // false
+// false && true --> false
+```
+```js
+var a = 1;
+
+console.log((a > 5) && (a == 10)) // false
+// false && false --> false
+```
+### Operador lógico "or"
+`||`  
+Tabla de verdad del operador OR  
+Para: X || Y
+
+| X | Y | X o Y |
+| -- | -- | -- |
+| true | true | true |
+| true | false | true|
+| false | true | true |
+| false | false | false |
+
+La expresión es verdadera si alguno de los dos operandos o ambos son verdaderos
+```js
+console.log(true || true) // true
+console.log(true || false) // true
+console.log(false || true) // true
+console.log(false || false) // false
+```
+```js
+var a = 8;
+
+console.log((a < 5) && (a > 15)) // false
+
+a = 2; 
+
+console.log((a < 5) && (a > 15)) // true
+
+a = 20;
+
+console.log((a < 5) && (a > 15)) // true
+```
+### Operador lógico "not"
+Operador que usamos para negar el valor de verdad de otra expresión
+
+Tabla de verdad del operador NOT  
+Para: !X  
+| X | !X |
+| -- | -- |
+| true | false |
+| false | true |
+
+```js
+console.log(!true) // false
+console.log(!false) // true
+
+var a = 8;
+
+console.log(!(a > 5)) // !true --> false
+
+console.log(!(a < 5)) // !false --> true
+```
+## Sentencias condicionales
+Los condicionales nos permiten decidir si un bloque de código se ejecuta o no, dependiendo de una condición.
+```js
+var x = 5;
+
+if (x > 2) { // tiene que ser verdadera para que se ejecute
+    console.log("La condición es verdadera")
+}
+
+if (x < 2) { // falso
+    console.log("Este código no se ejecutará")
+}
+
+if (x > 2 && x < 10) { // ee pueden omitir los paréntesis en cada par
+    console.log("La condición es verdadera")
+}
+```
+Otro ejemplo  
+```js
+var estacion = "Invierno";
+if (estacion == "Invierno") {
+    console.log("¡Sí! Me encanta el invierno")
+} // ¡Sí! Me encanta el invierno
+
+estacion = "Verano";
+if (estacion == "Invierno") {
+    console.log("¡Sí! Me encanta el invierno")
+} // false, no se muestra nada
+```
+```js
+var estacion = "Invierno";
+
+if (estacion == "Invierno") {
+    console.log("¡Sí! Me encanta el invierno")
+}
+
+console.log("Después del condicional...")
+```
+Se ejecutan en orden
+```
+¡Sí! Me encanta el invierno
+Después del condicional...
+```
+### Clásula "else"
+Podemos expandir las condicionales, por si el `if` es falso
+```js
+var x = 5;
+
+if (x < 2) {
+    console.log("La condición es verdadera")
+} else {
+    console.log("La condición es falsa")
+}
+```
+`La condición es falsa`
+
+Otro ejemplo
+```js
+var estacion = "Invierno";
+
+if (estacion === "Verano") { // triple igualdad
+    console.log("Comenzó el verano. Ya podemos ir a la playa)
+} else {
+    console.log("Ya quiero que llegue el verano para poder ir a la playa")
+}
+```
+```
+Ya quiero que llegue el verano para poder ir a la playa
+```
+### Clásula "if else"
+Para manejar condiciones alternativas. Se ejecutará la primera condición que sea verdadera, aunque haya muchas verdaderas después
+```js
+function clasificarValor(valor) {
+    if (valor % 2 == 0) {
+        console.log("Divisible entre 2")
+    } else if (valor % 3 == 0) {
+        console.log("Divisible entre 3")
+    } else {
+        console.log("No es divisible entre las opciones")
+    }
+}
+
+clasificarValor(2) // Divisible entre 2
+clasificarValor(15) // Divisible entre 3
+clasificarValor(7) // No es divisible entre las opciones
+```
+### Condionales: orden lógico
+Otro ejemplo de condicional y cada una de sus clásulas
+```js
+function clasificarValor(valor) {
+    if (valor < 5) {
+        console.log("Menor que 5");
+    } else if (valor < 10) {
+        console.log("Menor que 10");
+    } else {
+        console.log("Mayor o igual a 10")
+    }
+}
+
+clasificarValor(2) // Menor que 10
+```
+### Encadenar sentencias "if...else"
+Ejemplo de condicional con dos clásular `if else`
+```js
+function interpretarIMC(indiceDeMasaCorporal) {
+    if (indiceDeMasaCorporal < 18.5) {
+        console.log("Bajo Peso");
+    } else if (indiceDeMasaCorporal <= 24.9) {
+        console.log("Normal");
+    } else if (indiceDeMasaCorporal <= 29.9) {
+        console.log("Soprepeso")
+    } else {
+        console.log("Obeso")
+    }
+}
+
+indiceDeMasaCorporal(32.2)
+```
+### Código de golf - Mini proyecto
+Aplicaremos operadores de comparación y condicionales, también definiremos una función.
+
+En el juego de golf, cada hoyo tiene un par que representa el número promedio de golpes que se espera que haga un golfista para introducir la pelota en el hoyo.  
+Hay un nombre diferente dependiendo de qué tan por encima o por debajo del par estén tus golpes.
+
+Tu función tomará los argumentos par y golpes. Par es el número promedio de golpes esperados
+
+Retorna la cadena correcta según esta tabla que muestra los golpes en orden de mayor a menor prioridad:
+
+| Golpes | Retornar |
+| -- | -- |
+| 1 | "Hole-in-one!"|
+| <= par - 2 | "Eagle"|
+| par - 1 | "Birdie"|
+| par | "Par"|
+| par + 1 | "Bogey"|
+| par + 2 | "Double Bogey"|
+| >= par + 3 | "Go Home!"|
+
+par y golpes siempre serán numéricos y positivos
+
+```js
+function puntajeDeGolf(par, golpes) { // 
+    if (golpes == 1) {
+        return "Hole-in-one!";
+    } else if (golpes <= par - 2) {
+        return "Eagle";
+    } else if (golpes == par - 1) {
+        return "Birdie";
+    } else if (golpes == par) {
+        return  "Par";
+    } else if (golpes == par + 1) {
+        return "Bogey";
+    } else if (golpes == par + 2) {
+        return "Double Bogey";
+    } else if (golpes >= par + 3) {
+        return "Go Home!"
+    }
+}
+
+puntajeDeGolf(4, 1) // Hole-in-one
+puntajeDeGolf(4, 4) // Par
+```
+
+### Sentencias Switch
+En cierta manera una forma de reemplazar las condicionales. En base a un valor ejecutamos un bloque de código específico
+```js
+function clasificarValor(valor) {
+    var respuesta;
+    switch (valor) {
+        case 1:
+            respuesta = "alpha"
+            break;
+        case 2:
+            respuesta = "beta";
+            break;
+        case 3:
+            respuesta = "gamma";
+            break;
+        case 4:
+            respuesta = "delta";
+            break;
+        default:
+            respuesta = "Elegi solo del 1 al 4";
+            break;
+    }
+    return respuesta;
+}
+
+console.log(clasificarValor(3))
+```
+Otro ejemplo
+```js
+var producto = "hamburguesa";
+
+switch (producto) {
+    case "pizza":
+        console.log("La pizza básica cuesta $10.55");
+        break;
+    case "hamburguesa":
+        console.log("Las hamburguesas cuestan $6.78");
+        break;
+    case "Helado":
+        console.log("El helado cuesta $2.78");
+        break;
+}
+```
+`Las hamburguesas cuestan $6.78`
+### Sentencias Switch: Opción predeterminada
+Se ejecuta si ninguna de las opciones anteriores corresponde
+```js
+function seleccionarIdioma(valor) {
+    var idioma;
+    switch (valor) {
+        case 1:
+            idioma = "Español";
+            break;
+        case 2:
+            idioma = "Francés";
+            break;
+        case 3:
+            idioma = "Italiano";
+            break;
+        default: // no necesariamente es la última opción
+            idioma = "Inglés";
+            break; // el break acá es opcional
+    }
+    return idioma;
+}
+console.log(seleccionarIdioma(1)) // Español
+console.log(seleccionarIdioma(5)) // Inglés
+```
+### Sentencias switch: Múltiples casos
+Con `switch` también podemos escoger ejecutar un código específico para varios valores
+```js
+function clasificarVolumen(valor) {
+    var volumen;
+    switch (valor) {
+        caso 1:
+            volumen = "bajo";
+            break;
+        caso 2: // desde acá será "intermedio"
+        caso 3:
+            volumen = "intermedio";
+            break;
+        case 4:
+        case 5:
+        case 6:
+            volumen: "alto";
+            break;
+    }
+    return volumen;
+}
+
+console.log(clasificarVolumen(5)) // alto
+```
+### Reemplazar "if...else" por "switch"
+En ciertos casos podemos reemplazar condicionales por sentencias switch
+```js
+function seleccionarIdioma(valor) {
+    var idioma;
+
+    if (valor == 1) {
+        idioma = "Español";
+    } else if (valor == 2) {
+        idioma = "Francés";
+    } else if (valor == 3) {
+        idioma = "Italiano";
+    } else {
+        idioma = "Inglés";
+    }
+
+    return idioma;
+}
+```
+Reemplazando por `switch`
+```js
+function seleccionarIdioma(valor) {
+    var idioma;
+
+    switch (valor) {
+      case 1:
+          idioma = "Español";
+          break;
+      case 2:
+          idioma = "Francés";
+          break;
+      case 3:
+          idioma = "Italiano";
+          break;
+      default:
+          idioma = "Inglés";
+          break;
+    }
+    return idioma;
+}
+```
+### Retornar valores booleanos
+Ver cómo se puede retornar de manera muy concisa valores booleanos desde una función
+```js
+function esMenorQue(a, b) {
+  if (a < b) {
+    return true;
+  } else {
+    return false;
+  }
+}
+```
+Se puede reemplazar lo de arriba por una sola linea. Devuelve solamente `true` o `false` y cumple el mismo propòsito
+```js
+function esMenorQue(a, b) {
+  return a < b;
+}
+
+console.log(esMenorQue(4, 3)) // false
+console.log(esMenorQue(3, 4)) // true
+```
+### Patrón de retorno anticipado
+Cuando retornamos el valor de una función, en ese momento la función se detiene completamente. Cualquier linea que esté luego no se va a ejecutar
+```js
+function miFuncion() {
+  console.log("Hola");
+  return "Mundo";
+  console.log("Adiós"); // en vscode se ve apagado y dice "se ha detectado código inaccesible". 
+
+  // No se ejecutará xq está luego de return
+}
+```
+Es útil cuando necesitamos detener la función por alguna condición específica
+```js
+function calcularRaizCuadrada(num) {
+  if (num < 0) { // no existe raiz cuadrada para numeros negativos
+    return undefined; // solo retornará si el if se cumple
+  }
+  return Math.sqrt(num);
+}
+
+console.log(calcularRaizCuadrada(4)) // 2
+console.log(calcularRaizCuadrada(-4)) // undefined
+```
+Si no ponemos ese `if` retornará `NaN` que significa "Not a number". Pero queremos evitar eso y lo escribimos como el código anterior
+```js
+function calcularRaizCuadrada(num) {
+  return Math.sqrt(num);
+}
+
+console.log(calcularRaizCuadrada(-4)) // NaN
+```
+### Mini proyecto - Conteo de cartas
+En el juego de casino Blakjack el jugador puede sacarle ventaja a la casa llevando un registro del número relativo de cartas altas y bajas que quedan en la baraja.
+
+Esto se llama "conteo de cartas"
+
+Tener más cartas altas en la baraja es una ventaja para el jugador. Se le asigna un valor a cada carta de acuerdo a la siguiente tabla.
+
+- Cuando el conteo es positivo, el jugador debería apostar alto.
+- Cuando el conteo es 0, el jugador debería apostar bajo,
+
+| Cambio del conteo | Cartas |
+| -- | -- |
+| +1 | 2, 3, 4, 5, 6 |
+| 0 | 7, 8, 9 |
+| -1 | 10, 'J', 'Q', 'K', 'A' |
+
+Nuestra meta es definir una función para contar cartas.
+
+La función debe tomar un parámetro carta que puede ser un número o una cadena de caracteres y luego aumentar o reducir el valor de la variable global conteo de acuerdo al valor de la carta (observar la tabla).
+
+La función debe retornar una cadena de caracteres con el conteo actual y la cadena:
+- "Apostar" si el conteo es positivo.
+- "Esperar" si el conteo es cero o negativo.
+
+El conteo actual y la decisión del jugador ("Apostar" o "Esperar") deben estar separados por un espacio.
