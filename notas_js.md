@@ -1152,3 +1152,386 @@ La función debe retornar una cadena de caracteres con el conteo actual y la cad
 - "Esperar" si el conteo es cero o negativo.
 
 El conteo actual y la decisión del jugador ("Apostar" o "Esperar") deben estar separados por un espacio.
+```js
+var conteo = 0;
+
+function contarCartas(carta) {
+  var decision;
+
+  switch (carta) {
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      conteo++;
+      break;
+    case 10:
+    case 'K':
+    case 'J':
+    case 'Q':
+    case 'K':
+    case 'A':
+      conteo--;
+  }
+  if (conteo > 0) {
+    decision = "Apostar";
+  } else {
+    decision = "Esperar";
+  }
+  return `${conteo} ${decision}`
+}
+console.log(contarCartas(2)); // 1 Apostar
+console.log(contarCartas(3)); // 2 Apostar
+console.log(contarCartas(7)); // 2 Apostar
+console.log(contarCartas("K")); // 1 Apostar
+console.log(contarCartas("A")); // 0 Esperar
+```
+## Crear Objetos
+Los objetos nos permiten guardar la secuencia de un conjunto de propiedades que están relacionadas con sus correspondientes valores
+```js
+var miPerro = {
+    c
+}
+```
+> Se pueden omitir las comillas de los nombres de las propiedades si tienen una sola palabra.
+
+Se pueden usar números como propiedades
+```js
+var miObjeto = {
+    5: "cinco",
+}
+```
+Si el objeto tiene una propiedad que no es una cadena, Js automáticamente las convierte a cadena en la representación interna del programa.
+
+### Acceder a propiedades: Notación de punto
+```js
+var miPerro = {
+    "nombre": "Gino",
+    "edad": 5,
+    "peso": 6,
+    "raza": "Beagle"
+};
+
+// No hace falta las comillas para acceder a la propiedad
+console.log(miPerro.nombre) // Gino
+console.log(miPerro.edad) // 5
+```
+### Acceder a propiedades: Notación de corchetes
+Opción alternativa para acceder a las propiedades de un objeto.
+
+Para propiedades con nombres compuestos, solo se pueden usar `[]` porque con el punto daría _error_
+```js
+var miCuaderno = {
+  color: "verde",
+  categoria: 3,
+  "numero de paginas": 200,
+// numeroDePaginas: 200,  (se usa más así)
+  "numero de hojas": 100
+}
+
+console.log(miCuaderno.color) // verde
+
+console.log(miCuaderno["color"]) // verde (hay que rodear con comillas cuando se usan corchetes)
+
+console.log(miCuaderno["numero de paginas"]) // 200
+
+console.log(miCuaderno[numero de paginas]) // error (sin comillas)
+
+console.log(miCuaderno.numero de paginas) // error (sin comillas)
+```
+> Rodear con comillas cuando se usan corchetes
+
+### Acceder a propiedades: variables
+Ahora veremos cómo podemos acceder a las propiedades del objeto usando una variable. En lugar de un valor escribimos que escribimos directamente entre corchetes, vamos a usar una variable.
+```js
+var resultados = {
+    1: "nora256",
+    2: "gino577",
+    3: "estef543",
+    4: "kiara566"
+}
+
+var posicion = 4;
+
+console.log(resultados[posicion])
+
+posicion = 2;
+
+console.log(resultados[posicion]) //gino577
+```
+Para este caso solo se puede usar la notación de corchetes.
+
+### Actualizar propiedades
+Se pueden actualizar el valor de las propiedades para permitir que el objeto cambie durante la ejecución del programa.
+```js
+var mochila = {
+  color: "azul",
+  tamaño: "mediano",
+  contenido: ["botella de agua", "cuaderno"]
+};
+
+console.log(mochila.color) // azul
+
+// cambiando el valor de la propiedad color
+mochila.color = "verde";
+
+console.log(mochila.color) // verde
+
+// Agregando un valor
+console.log(mochila.contenido) // ["botella de agua", "cuaderno"]
+mochila.contenido.push("lápiz");
+console.log(mochila.contenido) // [ "botella de agua", "cuaderno", "lápiz" ]
+
+// Reasignando una propiedad
+mochila.contenido = [];
+console.log(mochila.contenido) // []
+```
+### Agregar propiedades
+También se pueden agregar nuevas propiedades a un objeto.
+```js
+var curso = {
+    titulo: "Aprende JavaScript desde cero",
+    idioma: "Español",
+    duracion: 30,
+};
+
+// Intentando acceder a la propiedad antes de crearla. No se pùede
+console.log(curso.vistas); // undefined
+
+// Añadiendo una propiedad
+curso.vistas = 34500;
+console.log(curso.vistas) // 34500
+```
+Añadiendo con corchetes
+```js
+curso["vistas"] = 34500
+console.log(curso.vistas) // 34500
+```
+### Eliminar propiedades
+La palabra clave es `delete`
+```js
+var curso = {
+  titulo: "Aprende JavaScript desde cero",
+  idioma: "Español",
+  duracion: 30,
+};
+
+console.log(curso.duracion) // 30
+
+delete curso.duracion;
+
+console.log(curso.duracion) // undefined (ya eliminado)
+
+console.log(curso) // { titulo: "Aprende JavaScript desde cero", idioma: "Español" } (ya sin la propiedad duracion)
+```
+### Objetos para búsquedas
+Veremos cómo podemos usar un objeto para reemplazar una sentencia switch con la estructura del siguiente código
+```js
+function buscarElementoQuimico(simbolo) {
+  var elementoQuimico = "";
+
+  switch (simbolo) {
+      case "Al":
+        elementoQuimico = "Aluminio";
+        break;
+      case "S":
+        elementoQuimico = "Azufre";
+        break;
+      case "Cl":
+        elementoQuimico = "Cloro";
+        break;
+      case "He":
+        elementoQuimico = "Helio";
+        break;
+      case "B":
+        elementoQuimico = "Boro";
+        break;
+      case "Li":
+        elementoQuimico = "Litio";
+        break;
+  }
+  return elementoQuimico;
+}
+```
+Lo de arriba funciona pero es muy largo. Hacemos lo de abajo cuando necesitamos asociar propiedades a valores específicos
+```js
+function buscarElementoQuimico(simbolo) {
+  var simbolosQuimicos = {
+    Al: "Aluminio",
+    S: "Azufre",
+    Cl: "Cloro",
+    He: "Helio",
+    B: "Boro",
+    Li: "Litio"
+}
+return simbolosQuimicos[simbolo];
+}
+
+console.log(buscarElementoQuimico("Al")) // Aluminio
+console.log(buscarElementoQuimico("Cl")) // Cloro 
+```
+### Verificar propiedades
+Podemos verificar si la propiedad existe o no antes de usarla.
+
+`hasOwnProperty` es un método en JavaScript que se utiliza para determinar si un objeto tiene una propiedad especificada como propiedad propia del objeto, y no heredada del prototipo. Si es del objeto devuelve `true`, si es del prototipo devuelve `false`
+```js
+var miCuaderno = {
+	color: "verde",
+	categoria: 3,
+	precio: 4.56
+};
+
+console.log(miCuaderno.hasOwnProperty("color")) // true
+console.log(miCuaderno.hasOwnProperty("origen")) // false
+```
+Es muy útil para trabajar con condicionales. Si la última condición es verdadera devolverá `true`
+```js
+function verificarPropiedad(obj, propiedad) {
+  if (obj.hasOwnProperty(propiedad)) {
+    return "Propiedad: " + obj[propiedad]
+  } else {
+    return "El objeto no tiene esta propiedad";
+  }
+}
+
+var miCuaderno = {
+	color: "verde",
+	categoria: 3,
+	precio: 4.56
+};
+
+console.log(verificarPropiedad(miCuaderno, "color")) // Propiedad: verde
+console.log(verificarPropiedad(miCuaderno, "toString")) // El objeto no tiene esta propiedad
+```
+### Objetos complejos
+Un arreglo con dos objetos que a la vez tienen propiedades
+```js
+var ordenesDePizzas = [
+  {
+    tipo: "margarita",
+    tamaño: "individual",
+    precio: 5.67,
+    toppings: [
+      "extra queso", 
+      "champiñones",
+      "piña"
+    ],
+    paraLlevar: true
+  },
+  {
+    tipo: "cuatro quesos",
+    tamaño: "familiar",
+    precio: 18.34,
+    toppings: [
+      "estra queso",
+      "pimenton"
+    ],
+    paraLlevar: false
+  }
+];
+
+// Accediendo a sus propiedades
+console.log(ordenesDePizzas[0].tipo) // margarita
+console.log(ordenesDePizzas[0]["tipo"]) // margarita
+
+console.log(ordenesDePizzas[0].toppings[1]) // champiñones
+```
+### Objetos anidados
+Objetos dentro de otros objetos.
+> Objetos anidados son útiles para aprender el formato `Json` (Javascript Object Notation)
+```js
+var miReceta = {
+  descripcion: "mi postre favorito",
+  costo: 15.6,
+  ingredientes: {
+      masa: {
+        harina: "100 grs",
+        sal: "1 cucharadita",
+        agua: "1 taza"
+      },
+      cobertura: {
+        azucar: "120 grs",
+        chocolate: "4 cucharadas",
+        mantequilla: "200 grs"
+      }
+  }
+};
+
+console.log(miReceta.descripcion); // mi postre favorito
+console.log(miReceta.costo); // 15.6
+console.log(miReceta.ingredientes) // { masa: {…}, cobertura: {…} }
+
+console.log(miReceta.ingredientes.masa) // { harina: "100 grs", sal: "1 cucharadita", agua: "1 taza" }
+
+console.log(miReceta.ingredientes.masa.harina) // 100 grs 
+console.log(miReceta.ingredientes.masa.sal) // 1 cucharadita
+console.log(miReceta["ingredientes"].masa.agua) // 1 taza
+```
+La notación de corchete es útil cuando necesitamos personalizar una variable por ejemplo, ya que la propiedad va entre comillas.
+
+### Arreglos anidados
+Son arreglos que se encuentran dentro de estructuras más complejas, por ejemplo dentro de un objeto que es parte de un arreglo
+```js
+var misPlantas = [
+  {
+    tipo: "flores",
+    lista: [
+      "rosas",
+      "tulipanes",
+      "dientes de león"
+    ]
+  },
+  {
+    tipo: "árboles",
+    lista: [
+      "abeto",
+      "pino",
+      "abedul"
+    ]
+  }
+];
+
+/* Accede a: primer elemento del arreglo central que es un objeto,
+luego a la segunda propiedad del objeto, 
+y luego al primer elemento del arreglo interno */
+var primeraFLor = misPlantas[0].lista[0];
+console.log(primeraFLor) // rosas
+
+var segundoArbol = misPlantas[1].lista[1];
+console.log(segundoArbol)
+```
+### Colección de discos - mini proyecto
+Tenemos un objeto que representa parte de una colección de álbumes musicales.
+
+Cada álbum tiene un número de identificación único (id) asociado a otras propiedades.
+
+No todos los álbumes tienen la información completa.
+```js
+var coleccionDeDiscos = {
+  7853: {
+    tituloDelAlbum: "Bee Gees Greatest",
+    artista: "Bee Gees",
+    canciones: ["Stayin' Alive"]
+  },
+  5439: {
+    tituloDelAlbum: "ABBA Gold"
+  }
+}
+```
+
+Define una función `actualizarDiscos` que tome los siguientes parámetros:
+- discos (el objeto que representa la colección de discos)
+- id
+- propiedad ("artista" o "canciones")
+- valor
+
+Tu meta es completar la función implementando las siguientes reglas para modificar el objeto pasado a la función:
+
+- Si "valor" es una cadena vacía, elimina la propiedad del álbum correspondiente.
+
+- Si "propiedad" es igual a la cadena de caracteres "canciones" pero el álbum no tiene una propiedad llamada "canciones", crea un arreglo vacío y agrega "valor" a ese arreglo.
+
+- Si "propiedad" es igual a la cadena de caracteres "canciones" y "valor" no es una cadena vacía, agrega "valor" al final del arreglo de canciones del álbum correspondiente.
+
+- Si "valor" no es una cadena vacía y "propiedad" no es igual a "canciones", asigna el valor del parámetro "valor" a la propiedad. Si la propiedad no existe, debes crearla y asignar este valor.
