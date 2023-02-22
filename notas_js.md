@@ -536,7 +536,7 @@ function crearCadenaConMeta(lenguajeDeProgramacion) {
     return "Mi meta es aprender " + lenguajeDeProgramacion;
 }
 var miMeta = crearCadenaConMeta("Javascript") // asignando a variable
-console.log(miMeta)
+console.log(miMeta) // Mi meta es aprender Javascript
 ```
 ### Permanece en Fila - Ejercicio
 **Próximo en la fila**
