@@ -555,7 +555,12 @@ function proximoEnLaFila (array, numero) {
     return removido;
 }
 
-console.log(proximoEnLaFila([1,2,3], 4)) // 1
+console.log(proximoEnLaFila([1,2,3], 4))
+```
+```
+[1, 2, 3, 4]
+[2, 3, 4]
+1
 ```
 Resolución de freecodecamp
 ```js
