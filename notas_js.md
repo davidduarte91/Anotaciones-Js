@@ -1535,3 +1535,609 @@ Tu meta es completar la función implementando las siguientes reglas para modifi
 - Si "propiedad" es igual a la cadena de caracteres "canciones" y "valor" no es una cadena vacía, agrega "valor" al final del arreglo de canciones del álbum correspondiente.
 
 - Si "valor" no es una cadena vacía y "propiedad" no es igual a "canciones", asigna el valor del parámetro "valor" a la propiedad. Si la propiedad no existe, debes crearla y asignar este valor.
+```js
+function actualizarDiscos(discos, id, propiedad, valor) {
+  if (valor === "") {
+    delete discos[id][propiedad];
+  } else if (propiedad === "canciones") {
+    discos[id][propiedad] = discos[id][propiedad] || []; // acá si no se cumple lo primero (si no es undefined ) se cumple lo 2do. Se cubren las dos primeras condiciones
+    discos[id][propiedad].push(valor);
+  } else {
+    discos[id][propiedad] = valor; // estamos agregando el valor a la propiedad del album especifico. Si la propiedad no existe se va a agregar y si ya existe se va a actualizar. Porque solamente puede llevar un solo valor
+  }
+}
+
+console.log(coleccionDeDiscos[7853].tituloDelAlbum) // Bee Gees Greatest
+actualizarDiscos(coleccionDeDiscos, 7853, "tituloDelAlbum", "") 
+console.log(coleccionDeDiscos[7853].tituloDelAlbum) // undefined (se eliminó la propiedad)
+
+
+
+console.log(coleccionDeDiscos[5439].canciones) // undefined
+actualizarDiscos(coleccionDeDiscos, 5439, "canciones", "Mamma mia") 
+console.log(coleccionDeDiscos[5439].canciones) // Mamma mia (creó la propiedad "canciones", creó un array vacío y agregó la canción)
+
+
+
+console.log(coleccionDeDiscos[5439].artista);
+actualizarDiscos(coleccionDeDiscos, 5439, "artista", "ABBA")
+console.log(coleccionDeDiscos[5439].artista); // ABBA
+```
+### Ciclo "while"
+Los ciclo o bucles nos permiten repetir una secuencia de instrucciones un número específico de veces. Hay dos tipos de ciclos: `while` y `for`.
+
+Los ciclos while se usan cuando no tenemos un número específico de iteraciones. Una iteración es una repetición de un bloque de código que queremos repetir. CUando no sabemos la cantidad que hay que repetir pero sí lo quede ser cierto para continuar usamos `while`
+```js
+var i = 0;
+
+while (i <= 3) {
+  console.log("Hola Mundo");
+  i++;
+}
+
+// Hola Mundo
+// Hola Mundo
+// Hola Mundo
+// Hola Mundo
+```
+```js
+var miArreglo = [];
+var i = 0;
+
+console.log(miArreglo); // []
+
+while (i < 10) {
+  miArreglo.push(i);
+  i++;
+}
+
+console.log(miArreglo); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+```js
+var numeros = [2, 3, 4, 5, 6, 7, 8, 9, 34];
+
+console.log(numeros.length)
+
+while (numeros.length > 4) {
+  numeros.pop();
+}
+
+console.log(numeros) // [ 2, 3, 4, 5 ]
+```
+### Ciclo "for"
+Usamos el ciclo `for` cuando sabemos cuántas iteraciones van a ser necesarias, y el ciclo for nos actualiza esa variable que antes teníamos que actualizar nosotros mismos con el ciclo while, la actualiza automáticamente
+```js
+var miArreglo = [];
+
+for (var i = 0; i < 10; i++) {
+  miArreglo.push(i);
+}
+
+console.log(miArreglo) // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+```js
+var miArreglo = [];
+
+for (var i = 0; i < 10; i = i + 2) { // i += 2
+  miArreglo.push(i);
+}
+
+console.log(miArreglo) // [ 0, 2, 4, 6, 8 ]
+```
+```js
+var miArreglo = [];
+
+for (var i = 0; i < 10; i = i + 2) { // i += 2
+  miArreglo.push("A");
+}
+
+console.log(miArreglo) // [ 'A', 'A', 'A', 'A', 'A' ]
+```
+### Ciclos "for": Números impares
+Obteniendo los números impares. Se suma de dos en dos y se agrega al array.
+```js
+var miArreglo = [];
+
+for (var i = 1; i < 20; i +=2) {
+  miArreglo.push();
+}
+
+console.log(miArreglo) // [ 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 ]
+```
+### Ciclos "for": Contar hacia atrás
+```js
+for (i = 15; i >= 10; i--) {
+  console.log(i)
+}
+/*
+15
+14
+13
+12
+11
+10
+/*
+```
+```js
+for (i = 15; i >= 10; i -= 2) {
+  console.log(i)
+}
+/*
+15
+13
+11
+/*
+```
+Ejemplo con un arreglo
+```js
+var miArreglo = [];
+
+for (var i = 10; i > 0; i -= 2) {
+  miArreglo.push(i)
+}
+
+console.log(miArreglo) // [ 10, 8, 6, 4, 2 ]
+```
+### Iterar sobre un arreglo con un ciclo "for"
+Iterar sobre un arreglo para usar cada elemento en algo
+```js
+var miArreglo = [4, 6, 8, 2];
+var total = 0;
+
+for (var i = 0; i < miArreglo.length; i++) {
+  console.log("Iteración " + i);
+  console.log(miArreglo[i])
+  total += miArreglo[i]; // en cada iteración se acumula la suma
+}
+
+console.log(total)
+}
+```
+```
+Iteración 0 
+4 
+Iteración 
+6
+Iteración 2 
+8
+Iteración 3 
+2 
+20
+```
+Convertir la cadena de caracteres a mayúscula
+```js
+var lenguajes = ["JavaScript", "Python", "Java", "C++"];
+
+for (var i = 0; i < lenguajes.length; i++) {
+  console.log(lenguajes[i].toUpperCase());
+}
+
+console.log(lenguajes)
+```
+```
+JAVASCRIPT
+PYTHON
+JAVA
+C++
+```
+Contar la cantidad de números pares en un arreglo
+```js
+function contarNumerosPares(arreglo) {
+  var total = 0;
+
+  for (var i = 0; i < arreglo.length; i++) {
+    if (arreglo[i] % 2 == 0) {
+      total++;
+    }
+  }
+  return total;
+}
+console.log(contarNumerosPares([2, 3, 4, 5, 6, 7, 8, 9])) // 4
+console.log([5, 3, 1]) // 0
+```
+### Ciclo "for" anidados
+Es útil escribir dentro de otros ciclos. Son muy útiles para procesar tipos de datos multidimensionales
+```js
+var miArreglo = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+for (var i = 0; i < miArreglo.length; i++) {
+	console.log("> Nueva iteración")
+  var arregloAnidado = miArreglo[i]; // Arreglo
+	console.log("Arreglo: " + arregloAnidado);
+
+	for (var j = 0; j < arregloAnidado.length; j++) {
+		console.log(">>> Ciclo anidado")
+		console.log("Elemento: " + arregloAnidado[j]);
+		console.log(arregloAnidado[j]); // Elemento
+	}
+}
+```
+```
+> Nueva iteración
+Arreglo: 1,2,3
+>>> Ciclo anidado
+Elemento: 1
+1
+>>> Ciclo anidado
+Elemento: 2
+2
+>>> Ciclo anidado
+Elemento: 3
+3
+> Nueva iteración
+Arreglo: 4,5,6
+>>> Ciclo anidado
+Elemento: 4
+4
+>>> Ciclo anidado
+Elemento: 5
+5
+>>> Ciclo anidado
+Elemento: 6
+6
+
+> Nueva iteración
+Arreglo: 7,8,9
+>>> Ciclo anidado
+Elemento: 7
+7
+>>> Ciclo anidado
+Elemento: 8
+8
+>>> Ciclo anidado
+Elemento: 9
+9
+```
+### Ciclo "do... while"
+Tercer tipo de ciclo que es básicamente como el `while` pero con un pequeño cambio. "Hacer tal cosa mientras".
+
+Usando el `while`. Primero evalúa si la condición es verdadera o falsa
+```js
+var x;
+x = 5;
+while (x < 10) {
+  console.log(x);
+	x++;
+}
+```
+Usando el `do while`. No evalúa si la condición es true o false
+```js
+var x;
+x = 5;
+do {
+  console.log(x);
+	x++;
+} while (x < 10)
+```
+La diferencia es que con el `do while` siempre se va a ejecutar aunque sea una vez la secuencia de instrucciones que aparece primero después del `do`
+```js
+var x = 16;
+
+do {
+  console.log(x);
+	x++;
+} while (x < 10) //16 y luego sale 
+```
+El `do while` se puede usar cuando se necesita que el usuario ingrese un valor y hay que verificar si es valor es válido o no. Pero hay que pedirselo al usuario al menos una vez. Si es válido continúa el programa y sino sigue pidiendo el valor hasta que ingrese uno válido para el programa.
+### Búsqueda de perfil
+Vamos a definir una función que nos permitirá buscar un contacto en una lista de contactos. Tenemos 3 contactos y estan representados como un objeto, son elementos de un arreglo. Cada uno de los objetos ocupa un índice en ese arreglo
+```js
+var contactos = [
+	{
+		nombre: "Nora",
+		apellido: "Nav",
+		numero: "0544545265",
+		gustos: ["Pizza", "Programación"]
+	},
+	{
+		nombre: "Harry",
+		apellido: "Potter",
+		numero: "0953893553",
+		gustos: ["Hogwartz", "Magia"]
+	},
+	{
+		nombre: "Sherlock",
+		apellido: "Holmes",
+		numero: "05730573093",
+		gustos: ["Casos interesantes", "Violín"]
+	}
+];
+
+function buscarPerfil(nombre, propiedad) {
+	for (let i = 0; i < contactos.length; i++) { // para recorrer el array
+		if(contactos[i].nombre === nombre) { // ingresa al primer elemento y con el punto a la propiedad
+			return contactos[i][propiedad] || "La propiedad no existe" // No se puede usar notación de punto porque es una variable. Si uso el punto buscaría una propiedad cuyo nombre sea "propiedad"
+		}	// || es por "si la propiedad no existe". En vez de usar else
+	}
+	return "El contacto no existe en la lista de contactos."
+}
+
+console.log(buscarPerfil("Harry", "gustos")) // [ "Hogwartz", "Magia" ]
+console.log(buscarPerfil("Nora", "apellido")) // Nav
+console.log(buscarPerfil("David", "gustos")) // El contacto no existe en la lista de contactos.
+```
+### Números aleatorios
+Cómo generar un número aleatorio en js. Se usa `Math` con mayúscula
+```js
+function generarFraccionAleatorior() {
+	return Math.random(); // random retorna un valor aleatorio entre [0, 1), el 1 no está incluido
+}
+
+console.log(generarFraccionAleatorior()) // 0.1430902766442953
+console.log(generarFraccionAleatorior()) // 0.16250322454674304
+console.log(generarFraccionAleatorior()) // 0.09801872874301154
+
+console.log(Math.random()) // se lo puede llamar así
+
+var numeroAleatorio = Math.random(); // guardando en una variable
+console.log(numeroAleatorio); // 0.7291129581885237
+```
+### Números enteros aleatorios
+Se pueden convertir los decimales a enteros dentro de un rango específico.
+
+**Math.floor()**: es una función en JavaScript que devuelve el mayor número entero menor o igual que un número determinado. Es decir, redondea hacia abajo el número al entero más cercano.
+```js
+var numeroAleatorioEntre0y19 = Math.floor(Math.random() * 20); // nunca llegará a ser 20. Con el floor redondeará a 19
+
+console.log(numeroAleatorioEntre0y19)
+```
+Una función que genere un número entero aleatorio. Esa función va a tener un solo parámetro, el límite superior del rango de números que queremos generar
+```js
+function generarEnteroAleatorio(limiteSuperior) {
+	// Generar un entero aleatorio entre 0 y el limite superior sin incluirlo
+	return Math.floor(Math.random() * limiteSuperior);
+}
+
+console.log(generarEnteroAleatorio(5)) // 0
+console.log(generarEnteroAleatorio(5)) // 4
+console.log(generarEnteroAleatorio(5)) // 3
+console.log(generarEnteroAleatorio(5)) // 3
+console.log(generarEnteroAleatorio(5)) // 2
+// el 5 es el límite superior y el maximo numero a mostrar será 4
+```
+Generando varios números automáticamente
+```js
+for (var i = 0; i < 9; i++) {
+	console.log(generarEnteroAleatorio(5))
+}
+```
+### Números enteros aleatorios en un rango
+Podemos generar numeros enteros aleatorios en un rango específico, con un limite inferior y uno superior
+```js
+function rangoAleatorio(limiteInferior, limiteSuperior) {
+	var random = Math.random() * (limiteSuperior - limiteInferior + 1);
+	console.log(random);
+	return Math.floor(random) + limiteInferior;
+} 
+// limiteSuperior - limiteInferior: nos da el tamaño del intervalo
+// + 1: porque queremos incluir el limiteInferior
+// Al Math.floor que se genere le sumamos el limiteInferior
+
+for(var i = 0; i < 5; i++) {
+	console.log(rangoAleatorio(3, 8))
+}
+/*
+4.076260843693342 
+7 
+4.539739581198661 
+7 
+5.146730831463727 
+8 
+5.567205335649872 
+8 
+5.803085571312646 
+8
+*/
+```
+### Función parseInt()
+La función `parseInt()` es una función predefinida en Javascript que se utiliza para convertir una cadena de caracteres en un número entero. La sintaxis de la función es la siguiente:
+```js
+parseInt(string, radix)
+```
+La función `parseInt()` toma la cadena de caracteres especificada en el primer parámetro y la convierte en un número entero. Si la cadena comienza con un número, parseInt() devuelve ese número. Si la cadena no comienza con un número, parseInt() devuelve `NaN` (Not a Number).
+
+Es importante tener en cuenta que `parseInt()` no funciona correctamente con números en coma flotante o números en notación científica. Para convertir una cadena que contiene un número con decimales a un número de punto flotante, se debe usar la función `parseFloat()`.
+```js
+console.log(parseInt("5")) // 5
+console.log(parseInt("-47")) // -47
+console.log(parseInt("6.7")) // 6 (se trunca con decimales)
+console.log(parseInt(6.7)) // 6 (se puede usar para redondear)
+console.log(parseInt("abc")) // NaN (no representa un número)
+```
+Ejemplo sin parseInt()
+```js
+var a = "5";
+var b = "7";
+
+console.log(a + b) // 57 (concatena en vez de sumar)
+```
+Con parseInt()
+```js
+var a = parseInt("5");
+var b = parseInt("7");
+
+console.log(a + b) // 12
+```
+### Función parseInt() con una base
+Se puede convertir una cadena de caracteres de otro sistema numérico al sistema decimal.
+
+El segundo parámetro `radix` se utiliza para especificar la base numérica en la que se encuentra la cadena. Por ejemplo, si la cadena está en binario, el valor de radix sería 2. Si no se especifica un valor de radix, se asume que la base numérica es 10.
+```js
+parseInt("123");      // devuelve 123
+parseInt("100", 2);   // devuelve 4 (el valor binario de "100" es 4 en base 10)
+parseInt("10", 8);    // devuelve 8 (el valor octal de "10" es 8 en base 10)
+parseInt("0xF", 16);  // devuelve 15 (el valor hexadecimal de "0xF" es 15 en base 10)
+parseInt("hello");    // devuelve NaN
+```
+### Operador condicional (ternario)
+Este operador nos permite compactar lo que sería un condicional en una sola línea
+```
+condición ? expresión1 : expresión2
+```
+* **condición**: La expresión que se evalúa como verdadera o falsa.
+* **expresión1**: El valor que se devuelve si la condición es verdadera.
+* **expresión2**: El valor que se devuelve si la condición es falsa.
+
+```js
+function retornarMinimo(x, y) {
+	if (x < y) {
+		return x;
+	} else {
+		return y;
+	}
+}
+```
+Con el ternario
+```js
+function retornarMinimo(x, y) {
+	return (x < y) ? x : y;
+}
+
+console.log(retornarMinimo(2, 3))
+```
+```js
+var a = 5;
+var b = 9;
+
+console.log(a > b ? a + 2 : b * 3) // 27
+```
+Es importante tener en cuenta que el operador condicional se utiliza mejor para decisiones simples y no debe ser anidado en exceso para evitar una mala legibilidad del código.
+### Múltiples operadores condicionales
+Se pueden combinar múltiples operadores condicionales o ternarios uno dentro del otro
+```js
+function compararNumeros(a, b) {
+	if (a == b) {
+		return "a y b son iguales";
+	} else if (a > b) {
+		return "a es mayor que b";
+	} else {
+		return "b es mayor que a";
+	}
+}
+```
+Simplificando la expresión
+```js
+function compararNumeros(a, b) {
+	return a == b ? "a y b son iguales" 
+		:  a > b ? "a es mayor que b"
+		: "b es mayor que a";
+}
+
+console.log(compararNumeros(4, 6)) // b es mayor que a
+```
+### var vs. let
+En JavaScript, tanto var como let son palabras clave utilizadas para declarar variables. Sin embargo, hay algunas diferencias importantes entre ellas:
+
+  **Alcance (scope)**:
+
+var tiene un alcance de función, lo que significa que la variable declarada con var está disponible en todo el ámbito de la función en la que se declaró. En cambio, let tiene un alcance de bloque, lo que significa que la variable declarada con let solo está disponible dentro del bloque donde se declaró.
+
+  **Hoisting**:
+
+Las variables declaradas con var son "elevadas" (hoisted) al principio del ámbito de la función o del archivo en el que se declararon. Esto significa que se pueden utilizar antes de ser declaradas, aunque su valor será undefined. En cambio, las variables declaradas con let no se pueden utilizar antes de su declaración en el código.
+
+  **Reasignación**:
+
+Tanto var como let permiten la reasignación de valores. Es decir, se puede cambiar el valor de una variable después de declararla. Sin embargo, si se utiliza let para declarar una variable y se intenta declararla nuevamente en el mismo ámbito, se producirá un error. En cambio, si se utiliza var para declarar una variable y se intenta declararla nuevamente en el mismo ámbito, la variable simplemente se sobrescribirá.
+
+  **Uso en ciclos (loops)**:
+
+Cuando se utiliza var dentro de un ciclo for, la variable se comparte entre todas las iteraciones del ciclo, lo que puede generar errores de lógica en algunas situaciones. En cambio, si se utiliza let dentro de un ciclo for, se crea una nueva variable en cada iteración del ciclo, lo que evita errores de este tipo.
+
+En resumen, let es una opción más segura y robusta para la declaración de variables en JavaScript, ya que evita errores comunes que pueden ocurrir con var. Se recomienda utilizar let en lugar de var siempre que sea posible.
+
+Usando `var`
+```js
+var miVariableGlobal = 4;
+
+console.log(miVariableGlobal) // se accede por fuera
+
+function miFuncion() {
+    console.log(miVariableGlobal) // se accede por dentro
+
+    var miVariableLocal = 8; // solo puede ser usada dentro de la función
+    console.log(miVariableLocal) 
+}
+
+miFuncion() // 4
+
+console.log(miVariableGlobal) // 4
+console.log(miVariableLocal) // no está definida por fuera
+```
+```js
+for (var i = 0; i < 3; i++) {
+    console.log(i)
+}
+// Con var se puede usar fuera del ciclo
+// Con let no se puede
+console.log("Variable: " + i)
+/*
+0
+1
+2
+Variable: 3
+*/
+```
+Usando let. Sirve por ejemplo si queremos que se use en un ámbito local
+```js
+for (let i = 0; i < 3; i++) {
+    console.log(i)
+}
+// Con var se puede usar fuera del ciclo
+// Con let no se puede
+console.log("Variable: " + i)
+/*
+0
+1
+2
+Uncaught ReferenceError: i is not defined
+*/
+```
+```js
+var mostrarColor = true;
+
+if (mostrarColor) {
+    let color = "verde"; // solo se puede acceder acá. Con var se podría acceder por fuera
+    console.log(`Mi color favorito es: ${color}`)
+}
+
+console.log(color)
+// Mi color favorito es: verde
+// Uncaught ReferenceError: color is not defined
+```
+### const
+`const` es una constante y no se puede modificar
+```js
+const miConstante = 35;
+
+console.log(miConstante); // 35
+
+miConstante = 15 //Uncaught TypeError: invalid assignment to const 'miConstante'
+```
+```js
+const miConstante; // no se puede hacer esto
+
+miConstante = 15;
+
+console.log(miConstante) // error, las declaraciones const deben inicializarse
+```
+Por convención los nombres de las constante se escriben con mayúsculas
+```js
+const MI_CONSTANTE = 15;
+console.log(MI_CONSTANTE) // 15
+```
+Calcular area de círculo
+```js
+function calcularAreaCirculo(radio) {
+    const PI = 3.14;
+
+    if (radio < 0) {
+        return undefined;
+    }
+
+    return PI * (radio ** 2);
+}
+
+console.log(calcularAreaCirculo(10))
+```
+### Mutar arreglo declarado con const
