@@ -536,7 +536,7 @@ function crearCadenaConMeta(lenguajeDeProgramacion) {
     return "Mi meta es aprender " + lenguajeDeProgramacion;
 }
 var miMeta = crearCadenaConMeta("Javascript") // asignando a variable
-console.log(miMeta)
+console.log(miMeta) // Mi meta es aprender Javascript
 ```
 ### Permanece en Fila - Ejercicio
 **Próximo en la fila**
@@ -555,7 +555,12 @@ function proximoEnLaFila (array, numero) {
     return removido;
 }
 
-console.log(proximoEnLaFila([1,2,3], 4)) // 1
+console.log(proximoEnLaFila([1,2,3], 4))
+```
+```
+[1, 2, 3, 4]
+[2, 3, 4]
+1
 ```
 Resolución de freecodecamp
 ```js
