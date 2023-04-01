@@ -2146,3 +2146,133 @@ function calcularAreaCirculo(radio) {
 console.log(calcularAreaCirculo(10))
 ```
 ### Mutar arreglo declarado con const
+Cuando se declare una variable con `const` en js, eso no significa que el valor no pueda cambiar. Significa que no podemos asignar un valor nuevo a esa variable
+```js
+const MI_ARREGLO = [1, 2, 3, 4]
+
+MI_ARREGLO = [5, 6, 7, 8] //Error, no se puede reasignar
+```
+Pero sí se puede cambiar los elementos del arreglo
+```js
+MI_ARREGLO[0] = 5; //Reasignamos el índice cero
+MI_ARREGLO[1] = 6; // y así con cada índice
+MI_ARREGLO[2] = 7;
+MI_ARREGLO[3] = 8;
+
+console.log(MI_ARREGLO) // [5, 6, 7, 8]
+```
+### Crear un objeto inmutable
+```js
+let colores = {
+    "verde": "#10e04b",
+    "azul": "#1b50e0",
+    "negro": "#000000",
+    "blanco": "#ffffff"
+};
+//No queremos cambiar el objeto en ninguna circunstancia
+
+Object.freeze(colores); // con esto lo 'frizamos'
+
+colores.amarillo = "#fff200";
+console.log(colores) // error de tipo, no se puede agregar la propiedad, el objeto no es extensible
+
+delete colores.verde; // error, no se puede borrar
+```
+### Funciones flecha
+Son un tipo más compacto de funciones, que generalmente se usan cuando queremos definir funciones anónimas
+```js
+const fecha = function() { // función normal
+    return new Date();
+}
+
+//función flecha
+let fecha = () => new Date();
+```
+Las funciones flecha son muy útiles cuando necesitamos pasar una función como argumento a otra función y lo que hacemos es escribirla directamente como el argumento
+
+### Funciones flecha con parámetros
+Definir funciones flecha que tomen uno o más parámetros
+```js
+const sumarTres = function(x) {
+    return x + 3;
+}
+
+// a flecha
+const sumarTres1 = (x) => x + 3;
+
+console.log(sumarTres1(4)) // 7
+```
+```js
+const concatenarArreglos = function(arr1, arr2) {
+    return arr1.concat(arr2);
+}
+
+console.log(concatenarArreglos([1, 2], [3, 4, 5])); // [ 1, 2, 3, 4, 5 ]
+
+// transformando a función flecha. Funciona
+const concatenarArreglos1 = (arr1, arr2) => arr1.concat(arr2);
+
+console.log(concatenarArreglos1([1, 2], [3, 4, 5])) // [ 1, 2, 3, 4, 5 ]
+```
+Si la función tiene más de una línea, **se usan las llaves**
+```js
+const sumar = (a, b) => {
+    let num = 6;
+    return a + b + num;
+}
+
+console.log(sumar(1, 1)) // 8
+```
+### Valores por defecto para parámetros
+Esto es útil cuando queremos permitir que el usuario omita algún argumento para usar el valor por defecto
+```js
+const incrementar = (num, valor = 1) => num + valor;
+
+console.log(incrementar(5)) // sumó 5 + 1. El 1 es valor por defecto
+console.log(incrementar(5, 3)) // 8 (sumó los valores que le pasé, sin usar el 1)
+```
+### Operador rest
+Operador que va a permitir escribir funciones muy versátiles. Te permite pasar cualquier número de argumentos a una función y que esos argumentos se agrupen como un arreglo
+```js
+function miFuncion(...args) { // 'args' se usa en este ejemplo, pero puede ser cualquier nombre
+    console.log(args);
+}
+
+miFuncion(1); // [ 1 ]
+miFuncion(1, 2) // [1, 2]
+miFuncion(1, 2, 3, 4) // [1, 2, 3, 4]
+
+miFuncion([1, 2, 3], [4, 5, 6]) // [[1, 2, 3], [4, 5, 6]]
+```
+Convierte todos los argumentos en elementos de un solo arreglo. Podemos agregarle cualquier cantidad de argumentos
+```js
+function miFuncion(...args) { // podemos trabajar con el argumento
+    console.log(args.length);
+}
+
+miFuncion(1, 2) // 2 (Hay dos elementos)
+```
+Ahora vamos a modificar una función
+
+`.reduce()` con estos argumentos suma los elementos del arreglo y retorna el resultado. El método .reduce() es una función de orden superior que se utiliza en los arreglos de JavaScript para reducir los valores de un arreglo a un solo valor. Este método toma una función de devolución de llamada y un valor inicial, y utiliza la función para reducir el arreglo a un valor único.
+```js
+const sumar = (x, y, z) => { //recibe solor 3 argumentos
+    const args = [x, y, z];
+    return args.reduce((a, b) => a + b, 0);
+}
+
+// para que reciba cualquier cantidad de argumentos
+const sumar1 = (...args) => {
+    return args.reduce((a, b) => a + b, 0);
+}
+
+console.log(sumar1(1, 2)) // 3
+```
+Explicación del último código: ¡Claro! Este es una función en JavaScript llamada "sumar1" que utiliza la sintaxis de parámetros rest para aceptar cualquier cantidad de argumentos y devolver su suma. La función logra esto usando el método reduce() para acumular los valores del array de argumentos y devolver su suma.
+
+Aquí tienes una explicación más detallada de cómo funciona la función:
+
+    El "..." antes del parámetro "args" indica que este es un parámetro rest, lo que significa que puede aceptar cualquier cantidad de argumentos.
+    La función utiliza el método reduce() en el array de argumentos para acumular sus valores y devolver su suma.
+    El primer argumento pasado a reduce() es una función de devolución de llamada que toma dos parámetros, "a" y "b", y devuelve su suma.
+    El segundo argumento pasado a reduce() es el valor inicial de "a", que en este caso es 0.
