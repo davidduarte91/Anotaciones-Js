@@ -1,52 +1,17 @@
-console.log("Hola mundo")
-// Para abrir este archivo con node, ir desde la terminal hasta la carpeta donde está este archivo y escribir "node index.js"
-// Sino "node index" sirve
 
-// Variables
-let numero = 5;
-let miVar = 5.2;
-let nombre = "Bienvenidos";
-let bool = true;
-console.log(numero)
-
-// concatenación. También se usan los backtips
-let miEdad = 31;
-console.log("Mi edad es " + miEdad)
-console.log(`Mi edad es ${miEdad}`)
-
-// Se pueden modificar las variables. NO así las constantes
-miEdad = 22;
-console.log("mi edad ahora es " + miEdad) // "mi edad ahora es 22"
 
 /*---------------------------------------------------------------------------------------------- */
 // OPERADORES
 
-// Operaciones aritméticos
-// Suma, resta, multiplicación, división y potencia
-let potencia = 3 ** 3 // 3 elevado a la tres
-console.log(potencia)
-
-let op1 = 3;
-let op2 = 2
-let resultado = op1 + op2;
-console.log("resultado es: " + resultado)
-
 //Operadores post y pre incremento y decremento que añaden uno o restan uno a la variable numerica en la que se aplican.
 // x--  --x decremento
-var x = 1; // x = 1
-var y = ++x // x = 2, y = 2  pre-incremento, incrementa x en uno y luego devuelve y
-var z = y++ + x // x = 2, y = 3, z = 4   devuelve z y luego incrementa y en uno
+
 
 // Operador typeOf: Sirve para conocer el tipo de variable sobre la que operamos
-typeof 5; //number
-typeof false; //boolean
-typeof "Carlos"; //string
-typeof undefined; // undefined
+
 
 // Operadores booleanos
-!true // false -> indica lo contrario
-!false // true
-!!true // true -> vuelve a su estado original
+
 
 // Operadores de igualdad. 
 true === true // true
@@ -141,37 +106,11 @@ if(numero2 > 0){
     console.log("El número es negativo")
 }
 
-// Sentencia Switch: Se puede sustituir un conjunto de sentencias if-else de una manera más legible
-// el bloque default no es obligatorio
-switch (condicion) {
-    case condicion_1:
-        bloque1
-        break;
-    case condicion_2:
-        bloque1
-        break;
-    default:
-        break;
-}
+
 
 /*--------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------- */
 // Bucles
-// while (mientras)
-let contador = 0
-while(contador < 5){
-    console.log("Hola a todos") //Imprime 5 veces
-    contador = contador + 1 // contador++
-}
-
-function bucleWhile(num) {
-    let i = 0;
-    while (i < num) {
-        console.log(i);
-        i++;
-    }
- }
- bucleWhile(11) //imprime del 0 al 10
 
 //------------
 // DO-WHILE
@@ -188,14 +127,7 @@ doWhile(0) // 0 -> imprime el cero xq ejecuta primero y al final pregunta
 
 //------------------
 
-//for
-function bucleFor(num) {
-    for (let i = 0; i < num; i++) {
-    console.log(i) // imprime del 0 al 9
-}
-bucleFor(11) //imprime del 0 al 10
-    
-}
+
 /*-------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------*/
 
@@ -206,14 +138,7 @@ en bloques que realicen una tarea concreta. De esta manera nuestro código es m�
 Las funciones normalmente, al acabar su ejecución devuelven un valor con conseguimos con el parámetro "return". Se declaran con una palabra reservada function 
 y a continuación suelen llevar un nombre , para poder invocarlas más adelante. Si no llevan nombre se les llama funciones anónimas */
 // Se puede llamar a la función antes y después crearla
-function saludar(nombre, edad){ // esta función no retorna nada, solo muestra en consola
-    console.log("Hola. Mi nombre es " + nombre)
-    console.log("Mi edad es: " + edad)
 
-    return `Hola, mi nombre es ${nombre} y  tengo ${edad} años` // Hola, mi nombre es David y tengo 31 años
-}
-saludar("David", 31); // Hola. Mi nombre es David -> acá se llama a la función
-                      // Mi edad es 31
 
 //-------------
 // Se puede poner un parámetro por defecto por si no se escribe nada en la llamada

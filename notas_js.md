@@ -1,7 +1,16 @@
 # CURSO JAVASCRIPT FREECODECAMP
 
+Para abrir un archivo js con node, ir desde la terminal hasta la carpeta donde está el archivo y escribir "node index.js"
+Sino "node index" sirve
 ## Variables
 Tipos de datos: undefined, null, boolean, string, symbol, number y object
+```js
+let numero = 5;
+let miVar = 5.2;
+let nombre = "Bienvenidos";
+let bool = true;
+console.log(numero)
+```
 
 En las variables podemos guardar valores. Los nombres de las variables deben ser descriptivos respecto de su valor
 
@@ -97,6 +106,19 @@ Esta operación sirve para verificar si un número es par o impar
 ```javascript
 var resto = 15 % 5; // 0 (el resto de la división es 0)
 resto = 5 / 2 // 1
+```
+### Operador typeOf
+```js
+typeof 5; //number
+typeof false; //boolean
+typeof "Carlos"; //string
+typeof undefined; // undefined
+```
+### Operadores post y pre incremento y decremento que añaden uno o restan uno a la variable numerica en la que se aplican.
+```js
+var x = 1; // x = 1
+var y = ++x // x = 2, y = 2  pre-incremento, incrementa x en uno y luego devuelve y
+var z = y++ + x // x = 2, y = 3, z = 4   devuelve z y luego incrementa y en uno
 ```
 ### Incrementar el valor de una variable
 ```javascript
@@ -202,6 +224,12 @@ Podemos unir cadenas de caracteres
 var nombreCompleto = "Alan" + "Turing" // AlanTuring
 var nombreCompleto = "Alan" + " Turing" // Alan Turing (con espacio)
 var nombreCompleto = "Alan" + " " + "Turing" // Alan Turing (concatenando un espacio)
+```
+También se usan los backtips
+```js
+let miEdad = 31;
+console.log("Mi edad es " + miEdad)
+console.log(`Mi edad es ${miEdad}`)
 ```
 ### Construir cadenas con variables
 Se puede utilizar la variable en cualquier parte
@@ -582,6 +610,11 @@ console.log(`Después: ${JSON.stringify(miArreglo)}`) // Después: [2,3,4,5,6]
 
 ### Valores booleanos
 Son los valores `true` y `false`. Estos son muy útiles para condicionales, comparaciones de valores y cuando trabajemos con operadores lógicos
+```js
+!true // false -> indica lo contrario
+!false // true
+!!true // true -> vuelve a su estado original
+```
 
 ### Operador de igualdad
 Se pueden comparar valores para ver si son o no iguales. Se puede hacer con el operador de igualdad
