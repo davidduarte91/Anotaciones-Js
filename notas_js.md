@@ -2275,7 +2275,7 @@ miFuncion(1); // [ 1 ]
 miFuncion(1, 2) // [1, 2]
 miFuncion(1, 2, 3, 4) // [1, 2, 3, 4]
 
-miFuncion([1, 2, 3], [4, 5, 6]) // [[1, 2, 3], [4, 5, 6]]
+miFuncion([1, 2, 3], [4, 5, 6]) // [[1, 2, 3], [4, 5, 6]] arreglos anidados del arreglo principal
 ```
 Convierte todos los argumentos en elementos de un solo arreglo. Podemos agregarle cualquier cantidad de argumentos
 ```js
@@ -2289,7 +2289,7 @@ Ahora vamos a modificar una función
 
 `.reduce()` con estos argumentos suma los elementos del arreglo y retorna el resultado. El método .reduce() es una función de orden superior que se utiliza en los arreglos de JavaScript para reducir los valores de un arreglo a un solo valor. Este método toma una función de devolución de llamada y un valor inicial, y utiliza la función para reducir el arreglo a un valor único.
 ```js
-const sumar = (x, y, z) => { //recibe solor 3 argumentos
+const sumar = (x, y, z) => { //recibe solo 3 argumentos
     const args = [x, y, z];
     return args.reduce((a, b) => a + b, 0);
 }
@@ -2305,7 +2305,168 @@ Explicación del último código: ¡Claro! Este es una función en JavaScript ll
 
 Aquí tienes una explicación más detallada de cómo funciona la función:
 
-    El "..." antes del parámetro "args" indica que este es un parámetro rest, lo que significa que puede aceptar cualquier cantidad de argumentos.
-    La función utiliza el método reduce() en el array de argumentos para acumular sus valores y devolver su suma.
-    El primer argumento pasado a reduce() es una función de devolución de llamada que toma dos parámetros, "a" y "b", y devuelve su suma.
-    El segundo argumento pasado a reduce() es el valor inicial de "a", que en este caso es 0.
+El "..." antes del parámetro "args" indica que este es un parámetro rest, lo que significa que puede aceptar cualquier cantidad de argumentos.
+La función utiliza el método reduce() en el array de argumentos para acumular sus valores y devolver su suma.
+El primer argumento pasado a reduce() es una función de devolución de llamada que toma dos parámetros, "a" y "b", y devuelve su suma.
+El segundo argumento pasado a reduce() es el valor inicial de "a", que en este caso es 0.
+
+### Operador spread
+Hace exactamente lo contrario al operador `spread`. Este operador toma un arreglo  y lo descompone en sus elementos individuales para que la función pueda recibirlos y asignarlos a sus parámetros correspondientes
+```js
+const numeros = [1, 2, 3];
+
+function sumar(x, y, z) {
+  return x + y + z;
+}
+
+sumar(numeros) // no podemos pasar este argumento a la función porque necesita 3 valores
+sumar(numeros[0], numeros[1], numeros[1]) // NO se hará esto. En vez de extraer los datos individualmente, usaremos spread
+```
+Ahora usando el operador spread
+
+```js
+const numeros = [1, 2, 3];
+
+function sumar(x, y, z) {
+  return x + y + z;
+}
+
+console.log(sumar(...numeros)); // 6 (que es la suma de 1, 2 y 3)
+
+//mostrando los valores en la consola
+const numeros = [1, 2, 3];
+
+function sumar(x, y, z) {
+  console.log(x); // 1
+  console.log(y); // 2
+  console.log(z); // 3
+  return x + y + z;
+}
+
+console.log(sumar(...numeros));
+```
+### Sintaxis de desestructuración
+Esta sintaxis nos permite asignar las propiedades de un objeto a variables, que podemos usar en nuestro programa
+```js
+const usuario = {
+  nombre: "Gino Smith",
+  edad: 34
+}
+```
+Anteriormente si queríamos asignar las propiedades (nombre y edad) a variables, tomábamos el objeto y asignabamos el valor de esa propiedad a la variable
+```js
+const nombre = usuario.nombre;
+const edad = usuario.edad;
+```
+Pero en el nuevo estandar podemos hacer lo mismo en una sola línea para cualquier número de propiedades que quisiéramos asignar
+```js
+const {nombre, edad} = usuario;
+```
+Explicación: 
+- Dentro de las llaves escribimos los nombres de las variables que queremos crear (la que hubiéramos creado una por línea)
+- Al otro lado de la asignación, escribimos el nombre del objeto (usuario)
+- Esto básicamente va a buscar dentro del objeto usuario y le va a decir: "ey, existe una propiedad llamada nombre", asi que asigna el valor "Gino Smith" a la variable __nombre__
+- Y hace lo mismo con la propiedad **edad**. Asigna 34 a la variable **edad**
+
+Esta es la sintaxis de desestructuración más simple que podemos usar. Veamos otro ejemplo:
+```js
+var coordenadas = {
+  x: 4,
+  y: 6,
+  z: 12
+}
+```
+Antes en Es5, teníamos que hacer lo que está acá debajo.
+```js
+const x = coordenadas.x;
+const y = coordenadas.y;
+const z = coordenadas.z;
+```
+Pero ahora con la sintaxis de desestructuración, podemos hacer esto: Asignamos cada valor a su variable correspondiente
+```js
+const {x, y, z} = coordenadas;
+
+console.log(x;) // 4
+console.log(y;) // 6
+console.log(z;) // 12
+```
+
+### Sintaxis de desestructuración: Objetos Anidados
+Cómo usar sintaxis de desestructuración para objetos que están dentro de otros objetos
+```js
+const usuario = {
+  johnDoe: {
+    edad: 27,
+    correo: "johnDoe@freecodecamp.com"
+  }
+}
+```
+Digamos que queremos asignar la edad y el correo a variables individuales en nuestro programa para trabajar con ellas
+```js
+const {johnDoe: {edad, correo}} = usuario;
+```
+Cómo extraemos la edad y el correo de johnDoe:
+- Escribimos el nombre de la propiedad que queremos acceder
+- Luego entre llaves, escribimos los nombres de las propiedades que queremos asignar a las variables
+
+Ahora ya tenemos disponibles las variables disponibles para trabajar
+```js
+console.log(edad); // 27
+console.log(correo); // johnDoe@freecodecamp.com
+```
+
+Otra alternativa que podemos usar y es útil, es que podemos asignarles a las propiedades (edad, nombre) nombres distintos. Es como si asignaramos a variables con nombres distintos
+```js
+const {johnDoe: edad: edadDelUsuario, correo: correoDelUsuario} = usuario;
+
+console.log(edadDeUsuario); // 27
+console.log(correoDelUsuario); // johnDoe@freecodecamp.com
+```
+Y si ahora usamos los nombres de las propiedades, veremos que no están definidos como variables en nuestro programa
+```js
+console.log(edad); // edad is not defined
+console.log(correo); // correo is not defined
+```
+
+**Otro ejemplo de las sintaxis de desestructuración aplicado a objetos anidados**
+---
+> Las propiedades de objetos a los que no se les pone comillas, js detrás de escena los coloca.
+```js
+const PRONOSTICO_LOCAL = {
+  "ayer": {
+    minima: 61,
+    maxima: 75
+  },
+  "hoy": {
+    minima: 64,
+    maxima: 77
+  },
+  "mañana": {
+    minima: 68,
+    maxima: 80
+  }
+}
+```
+Veamos cómo podemos usar la desestructuración para acceder a la minima y máxima de hoy.
+
+Antes cómo accederíamos a esos valores para asignarlos a una variable...
+```js
+const minimoHoy = PRONOSTICO_LOCAL.hoy.minima;
+const maximaHoy = PRONOSTICO_LOCAL.hoy.maxima;
+
+console.log(minimoHoy, maximaHoy) // 64 77
+```
+Ahora con la sintaxis de desestructuración
+
+```js
+const {hoy: {minima: minimaHoy}} = PRONOSTICO_LOCAL;
+const {hoy: {maxima: maximaHoy}} = PRONOSTICO_LOCAL;
+
+console.log(minimaHoy, maximaHoy) // 64 77
+```
+Escribiendo lo mismo en una sola linea
+```js
+const {hoy: {minima: minimaHoy, maxima: maximaHoy}} = PRONOSTICO_LOCAL;
+
+console.log(minimaHoy, maximaHoy) // 64 77
+```
