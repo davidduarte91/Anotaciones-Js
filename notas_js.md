@@ -120,6 +120,7 @@ var x = 1; // x = 1
 var y = ++x // x = 2, y = 2  pre-incremento, incrementa x en uno y luego devuelve y
 var z = y++ + x // x = 2, y = 3, z = 4   devuelve z y luego incrementa y en uno
 ```
+- *La tercera variable "z" se inicializa con el resultado de sumar "y" y "x", pero usando el operador ++ para "y". Como "y" ya tiene un valor de 2, se suma 2 con el valor actual de "x", que es 2 (ya que "x" fue incrementado previamente por la asignación a "y"). Por lo tanto, "z" obtiene el valor de 4.*
 ### Incrementar el valor de una variable
 ```javascript
 var librosComprados = 105; // valor inicial
@@ -144,7 +145,7 @@ var a = 23;
 a = a + 5; // 28
 
 //Otra manera. Es equivalente al ejemplo anterior
-a += 5; // 28 ("añade 5 al valor actual de 'a' y asígnalo a esa variable)
+a += 5; // 28 ("añade 5 al valor actual de 'a' y asígnalo a esa variable")
 ```
 * Se puede sumar cualquier cantidad. No solamente 5 o un número entero
 ```javascript
@@ -203,7 +204,7 @@ var miCadena = "Soy una cadena de caracteres \"con comillas\"";
 ### Cadenas de caracteres con comillas simples
 Para usar  menos caracteres intercalar comillas simples y dobles dentro de la cadena
 ```javascript
-var miMeta;2
+var miMeta;
 miMeta = 'Aprender a programar con "freeCodeCamp"'
 ```
 ### Secuencias de escape
@@ -401,7 +402,7 @@ Método de arreglo que nos permite remover el primer elemento del arreglo. Tambi
 ```js
 var estaciones = [ "Invierno", "Otoño", "Primavera", "Verano" ]
 estaciones.shift();
-console.log(estaciones)
+console.log(estaciones) // [ "Otoño", "Primavera", "Verano" ]
 ```
 ### .unshift()
 Agregar un elemento al principio del arreglo. Hay que especificar qué elemento quiero agregar
@@ -622,7 +623,7 @@ Se pueden comparar valores para ver si son o no iguales. Se puede hacer con el o
 console.log(5 == 5) // true
 console.log(6 == 5) // false
 console.log("Hola" == "Hola") // true
-console.log("Hola" == "JavaScript) // false
+console.log("Hola" == "JavaScript") // false
 console.log("Hola" == "hola") // false
 console.log([1, 2, 3] == [1, 2, 3]) // false (no comparar arreglos con este operador porque no compara los elementos del arreglo, sino que compara si los arreglos en la memoria representan el mismo objeto)
 console.log([1, 2, 3] == [4, 5, 6]) // false
@@ -667,7 +668,7 @@ console.log(a == b) // true
 console.log(a === b) // true
 ```
 ### Operador de desigualdad
-Este operador compara dos valores y retorna `true` si sus valores son distintos yn`false` si son iguales. Es lo opuesto al operador de igualdad.
+Este operador compara dos valores y retorna `true` si sus valores son distintos y `false` si son iguales. Es lo opuesto al operador de igualdad.
 ```js
 console.log(9 != 6) // true
 console.log(9 != 9) // false
@@ -714,7 +715,7 @@ console.log(5 >= 5) // true
 console.log(5 < 6) // true
 console.log(10 < 3) // false
 console.log("A" < "B") // true
-console.log("ABC" < "ABC") // true
+console.log("ABC" < "ABC") // false
 
 var a = 15;
 var b = 7;
@@ -788,15 +789,15 @@ console.log(false || false) // false
 ```js
 var a = 8;
 
-console.log((a < 5) && (a > 15)) // false
+console.log((a < 5) || (a > 15)) // false
 
 a = 2; 
 
-console.log((a < 5) && (a > 15)) // true
+console.log((a < 5) || (a > 15)) // true
 
 a = 20;
 
-console.log((a < 5) && (a > 15)) // true
+console.log((a < 5) || (a > 15)) // true
 ```
 ### Operador lógico "not"
 Operador que usamos para negar el valor de verdad de otra expresión
@@ -831,7 +832,7 @@ if (x < 2) { // falso
     console.log("Este código no se ejecutará")
 }
 
-if (x > 2 && x < 10) { // ee pueden omitir los paréntesis en cada par
+if (x > 2 && x < 10) { // se pueden omitir los paréntesis en cada par
     console.log("La condición es verdadera")
 }
 ```
@@ -872,14 +873,16 @@ if (x < 2) {
     console.log("La condición es falsa")
 }
 ```
-`La condición es falsa`
+```
+La condición es falsa
+```
 
 Otro ejemplo
 ```js
 var estacion = "Invierno";
 
 if (estacion === "Verano") { // triple igualdad
-    console.log("Comenzó el verano. Ya podemos ir a la playa)
+    console.log("Comenzó el verano. Ya podemos ir a la playa")
 } else {
     console.log("Ya quiero que llegue el verano para poder ir a la playa")
 }
@@ -904,8 +907,8 @@ clasificarValor(2) // Divisible entre 2
 clasificarValor(15) // Divisible entre 3
 clasificarValor(7) // No es divisible entre las opciones
 ```
-### Condionales: orden lógico
-Otro ejemplo de condicional y cada una de sus clásulas
+### Condicionales: orden lógico
+Otro ejemplo de condicional y cada una de sus cláusulas
 ```js
 function clasificarValor(valor) {
     if (valor < 5) {
@@ -917,10 +920,10 @@ function clasificarValor(valor) {
     }
 }
 
-clasificarValor(2) // Menor que 10
+clasificarValor(2) // Menor que 5
 ```
 ### Encadenar sentencias "if...else"
-Ejemplo de condicional con dos clásular `if else`
+Ejemplo de condicional con dos cláusulas `if else`
 ```js
 function interpretarIMC(indiceDeMasaCorporal) {
     if (indiceDeMasaCorporal < 18.5) {
@@ -934,7 +937,7 @@ function interpretarIMC(indiceDeMasaCorporal) {
     }
 }
 
-indiceDeMasaCorporal(32.2)
+indiceDeMasaCorporal(32.2) // Obeso
 ```
 ### Código de golf - Mini proyecto
 Aplicaremos operadores de comparación y condicionales, también definiremos una función.
@@ -1006,7 +1009,7 @@ function clasificarValor(valor) {
     return respuesta;
 }
 
-console.log(clasificarValor(3))
+console.log(clasificarValor(3)) // gamma
 ```
 Otro ejemplo
 ```js
@@ -1024,7 +1027,9 @@ switch (producto) {
         break;
 }
 ```
-`Las hamburguesas cuestan $6.78`
+```
+Las hamburguesas cuestan $6.78
+```
 ### Sentencias Switch: Opción predeterminada
 Se ejecuta si ninguna de las opciones anteriores corresponde
 ```js
@@ -1290,7 +1295,7 @@ var resultados = {
     4: "kiara566"
 }
 
-var posicion = 4;
+var posicion = 4; // kiara566
 
 console.log(resultados[posicion])
 
@@ -1305,7 +1310,7 @@ Se pueden actualizar el valor de las propiedades para permitir que el objeto cam
 ```js
 var mochila = {
   color: "azul",
-  tamaño: "mediano",
+  tamanho: "mediano",
   contenido: ["botella de agua", "cuaderno"]
 };
 
@@ -1537,7 +1542,7 @@ var primeraFLor = misPlantas[0].lista[0];
 console.log(primeraFLor) // rosas
 
 var segundoArbol = misPlantas[1].lista[1];
-console.log(segundoArbol)
+console.log(segundoArbol) // pino
 ```
 ### Colección de discos - mini proyecto
 Tenemos un objeto que representa parte de una colección de álbumes musicales.
@@ -1597,7 +1602,7 @@ console.log(coleccionDeDiscos[5439].canciones) // Mamma mia (creó la propiedad 
 
 
 
-console.log(coleccionDeDiscos[5439].artista);
+console.log(coleccionDeDiscos[5439].artista); // undefined
 actualizarDiscos(coleccionDeDiscos, 5439, "artista", "ABBA")
 console.log(coleccionDeDiscos[5439].artista); // ABBA
 ```
@@ -2470,3 +2475,379 @@ const {hoy: {minima: minimaHoy, maxima: maximaHoy}} = PRONOSTICO_LOCAL;
 
 console.log(minimaHoy, maximaHoy) // 64 77
 ```
+### Sintaxis de desestructuración: Arreglos
+Nos permite asignar valores a variables usando arreglos.
+
+De esta manera se pueden asignar valores a un arreglo de variables. Se asignan en el orden que aparecen
+```js
+var a;
+var b;
+
+[a, b] = [1, 2]
+
+console.log(a) // 1
+console.log(b) // 2
+```
+Si el arreglo es más largo, igualmente se asignaran solamente los dos primeros valores
+```js
+var a;
+var b;
+
+[a, b] = [1, 2, 3, 4, 5, 6]
+
+console.log(a); // 1
+console.log(b); // 2
+```
+Y si agregamos una tercera variable y queremos que se asigne el **quinto** valor, agregamos **dos comas** que serían los valores tres y cuatro, y luego el nombre de la variable
+```js
+var a;
+var b;
+
+[a, b,,, c] = [1, 2, 3, 4, 5, 6]
+
+console.log(a) // 1
+console.log(b) // 2
+console.log(c) // 5
+```
+- La sintaxis de desestructuración puede usarse para cambiar o intercambiar los valores de dos variables
+
+Queremos que **a** tenga el valor de **b** y viceversa. Lo que está a la derecha se asignará a la izquierda4
+```js
+var a = 8;
+var b = 6;
+
+[b, a] = [a, b]
+
+console.log("a: " + a) // 6
+console.log("b: " + b) // 8
+```
+### Sintaxis de desestructuración con el operador rest
+El operador `rest` agrupa los elementos y forma un arreglo cuando lo usábamos con funciones, agrupaba los argumentos.
+
+En este caso vamos a usar ese operador para reasignar un arreglo en varias variables
+```js
+var a;
+var b;
+var arr;
+
+[a, b, ...arr] = [1, 2, 3, 4, 5, 6, 7]
+
+console.log(a) // 1
+console.log(b) // 2
+console.log(arr) // [3, 4, 5, 6, 7]
+```
+Ahora vamos a remover los tres primeros elementos de un arreglo
+```js
+const arregloInicial = [1, 2, 3, 4, 5, 6, 7, 8];
+
+function removerTresPrimerosElementos(arreglo) {
+  const [ , , , ...nuevoArreglo] = arreglo;
+  return nuevoArreglo;
+}
+
+const arregloFinal = removerTresPrimerosElementos(arregloInicial);
+console.log(arregloFinal) // // [4, 5, 6, 7, 8]
+```
+__Explicación del código__: *El código define un arreglo llamado arregloInicial que contiene 8 números del 1 al 8. Luego, se define una función llamada removerTresPrimerosElementos que toma como argumento un arreglo y devuelve un nuevo arreglo que contiene todos los elementos del arreglo original excepto los primeros tres. Para hacer esto, se utiliza una destructuración de arreglos en la que se crea un nuevo arreglo llamado nuevoArreglo que contiene todos los elementos restantes después de los primeros tres.*
+
+*Después de definir la función, se llama a la función removerTresPrimerosElementos con arregloInicial como argumento, y el resultado se almacena en una nueva variable llamada arregloFinal. Finalmente, se imprime arregloFinal en la consola, que contiene los elementos del arregloInicial excepto los primeros tres elementos, que son [4, 5, 6, 7, 8].*
+
+### Sintaxis de desestructuración: pasar objeto como argumento
+```js
+var nuevoPerfilCliente = {
+  nombre: "Jane Doe",
+  edad: 24,
+  nacionalidad: "Española",
+  ubicación: "España"
+};
+
+// ¿Cómo podemos actualizar su perfil?
+
+const actualizarPerfil = (informacionDePerfil) => {
+  const {nombre, edad, nacionalidad, ubicacion} = informacionDePerfil;
+  console.log(nombre);
+  console.log(edad);
+  console.log(nacionalidad);
+  console.log(ubicacion);
+}
+
+actualizarPerfil(nuevoPerfilCliente)
+// Jane Doe
+// 24
+// Española
+// España
+```
+- Este código crea un objeto llamado "nuevoPerfilCliente" que contiene información personal de un cliente, como su nombre, edad, nacionalidad y ubicación.
+
+  Luego, se define una función llamada "actualizarPerfil" que toma un objeto como argumento. Dentro de la función, se utiliza la sintaxis de desestructuración para asignar los valores de las propiedades del objeto a variables independientes.
+
+  Finalmente, se llama a la función "actualizarPerfil" y se le pasa como argumento el objeto "nuevoPerfilCliente". La función imprime el valor de cada variable independiente (nombre, edad, nacionalidad, ubicación) en la consola.
+
+  En resumen, este código muestra cómo se puede utilizar la sintaxis de desestructuración para acceder a los valores de las propiedades de un objeto y asignarlos a variables independientes, y cómo se puede utilizar una función para imprimir esos valores en la consola.
+
+Otra manera:
+```js
+var nuevoPerfilCliente = {
+  nombre: "Jane Doe",
+  edad: 24,
+  nacionalidad: "Española",
+  ubicación: "España"
+};
+
+// ¿Cómo podemos actualizar su perfil?
+
+const actualizarPerfil = ({nombre, edad, nacionalidad, ubicacion}) => {
+  console.log(nombre);
+  console.log(edad);
+  console.log(nacionalidad);
+  console.log(ubicacion);
+}
+
+actualizarPerfil(nuevoPerfilCliente)
+// Jane Doe
+// 24
+// Española
+// España
+```
+- Este código es similar al código anterior, pero utiliza la sintaxis de desestructuración directamente en los parámetros de la función "actualizarPerfil" en lugar de asignar las variables dentro de la función.
+
+  El objeto "nuevoPerfilCliente" sigue siendo el mismo, con la información personal de un cliente.
+
+  La función "actualizarPerfil" utiliza la sintaxis de desestructuración en sus parámetros para asignar los valores de las propiedades del objeto a variables independientes. Luego, la función imprime el valor de cada variable independiente en la consola.
+
+  Finalmente, la función "actualizarPerfil" se llama y se le pasa el objeto "nuevoPerfilCliente" como argumento. La función imprime el valor de cada variable independiente (nombre, edad, nacionalidad, ubicación) en la consola.
+
+  En resumen, este código muestra una forma alternativa de utilizar la sintaxis de desestructuración directamente en los parámetros de una función para acceder a los valores de las propiedades de un objeto y asignarlos a variables independientes.
+
+No necesariamente hay que tomar todos los valores como argumentos
+```js
+var nuevoPerfilCliente = {
+  nombre: "Jane Doe",
+  edad: 24,
+  nacionalidad: "Española",
+  ubicacion: "España"
+};
+
+// ¿Cómo podemos actualizar su perfil?
+
+const actualizarPerfil = ({nombre, edad}) => {
+  console.log(nombre);
+  console.log(edad);
+}
+
+actualizarPerfil(nuevoPerfilCliente)
+// Jane Doe
+// 24
+```
+- Este código muestra cómo se puede utilizar la sintaxis de desestructuración para acceder solo a ciertas propiedades de un objeto y asignarlas a variables independientes en una función. En este caso, la función solo necesita el nombre y la edad del objeto "nuevoPerfilCliente".
+
+**Otro ejemplo**  
+```js
+const estadisticas = {
+  max: 56.78,
+  desviacionEstandar: 4.34,
+  mediana: 34.54,
+  moda: 23.87,
+  min: -0.75,
+  promedio: 35.85
+}
+
+const puntoMedio = ({max, min}) => (max + min) / 2.0;
+
+console.log(puntoMedio(estadisticas)) // 28.015
+```
+- *El código define un objeto llamado "estadisticas" que tiene varias propiedades numéricas, incluyendo la máxima, la mínima, la mediana, la moda, la desviación estándar y el promedio. Luego define una función llamada "puntoMedio" que toma el valor máximo y mínimo del objeto "estadisticas" como argumentos y devuelve su punto medio.*
+
+  *Finalmente, se llama a la función "puntoMedio" con el objeto "estadisticas" como argumento y se imprime el resultado en la consola, que es el punto medio de la máxima y mínima del objeto "estadisticas", que en este caso es 28.015.*
+
+  *En resumen, el código calcula y muestra el punto medio entre el valor máximo y mínimo de un conjunto de datos estadísticos que se han definido previamente.*
+
+### Plantillas literales o plantillas de cadenas
+Ahora vamos a ver sobre un tipo especial de cadena de caracteres que nos permite crear cadenas con varias lineas y reemplazar los valores de las variables que necesitemos, fácilmente en una cadena.
+
+**Características**
+- Se usa el acento invertido (backtick) en lugar de comillas.
+- Pueden contener comillas simples y dobles.
+- Las líneas se preservan como se escriben en el código.
+- Para reemplazar una variable se escribe `${variable}`
+- Dentro de `${}` también puedes escribir expresiones.
+
+```js
+var a = 6;
+console.log(`El valor de a es ${a}`) // El valor de a es 6
+```
+```js
+var nombre =  "Nora";
+var edad = 6;
+
+console.log(`Mi nombre es ${nombre} y tengo ${edad} años.`)
+// Mi nombre es Nora y tengo 6 años.
+```
+```js
+var miArreglo = [1, 2, 3, 4];
+
+console.log(`El arreglo es ${JSON.stringify(miArreglo)}`)
+// El arreglo es [1, 2, 3, 4]
+```
+- *En este caso, se utiliza la función `JSON.stringify()` para convertir el arreglo miArreglo en una cadena de texto JSON antes de insertarlo en la plantilla literal del string.*
+
+También podemos reemplazar el valor de las propiedades de un objeto
+```js
+var persona = {
+  nombre: "Gino Cass",
+  edad: 10
+}
+
+const SALUDO = `¡Hola! Mi nombre es ${persona.nombre} y tengo ${persona.edad} años.`
+
+console.log(SALUDO) // ¡Hola! Mi nombre es Gino Cass y tengo $10 años.
+```
+- *Escribe la constante con mayúsculas porque es una plantilla*
+
+### Crear objetos de forma concisa
+Esta es una forma de crear un objeto
+```js
+const crearPersona = (nombre, edad, idioma) => {
+  return {
+    nombre: nombre,
+    edad: edad,
+    idioma: idioma
+  }
+}
+
+console.log(crearPersona("Gino Smith", 28, "Español"))
+// { nombre: 'Gino Smith', edad: 28, idioma: 'Español' }
+```
+Pero hay una forma aún más concisa de escribir esta función flecha en una sola línea
+
+```js
+const crearPersona = (nombre, edad, idioma) => ({nombre, edad, idioma});
+
+console.log(crearPersona("Gino Smith", 28, "Español"))
+// { nombre: 'Gino Smith', edad: 28, idioma: 'Español' }
+```
+- *El código define una función llamada crearPersona que toma tres argumentos: nombre, edad e idioma. La función crea y devuelve un objeto con tres propiedades: nombre, edad e idioma.*
+
+  *En lugar de utilizar la sintaxis tradicional de objeto clave: valor, la función utiliza la sintaxis abreviada de objeto introducida en ES6 para crear un objeto con las mismas propiedades y valores. En esta sintaxis, se omite la especificación explícita de la clave y se utiliza el nombre de la variable como clave.*
+
+  *Luego, se utiliza la función console.log() para imprimir el objeto devuelto por la función crearPersona, pasando como argumentos los valores "Gino Smith", 28 y "Español".*
+
+  Al ejecutar el código, la salida en la consola será:
+
+      { nombre: 'Gino Smith', edad: 28, idioma: 'Español' }
+
+  *La función crearPersona devuelve un objeto con las tres propiedades especificadas, donde el valor de cada propiedad corresponde al argumento pasado en la llamada de la función. Esta sintaxis abreviada de objeto es más legible y fácil de escribir para crear objetos simples con propiedades y valores correspondientes a las variables.*
+
+### Métodos
+También se pueden declarar funciones dentro de los objetos 
+```js
+const persona = {
+  nombre: "Isabel",
+  presentarse: function() {
+    return `¡Hola! Mi nombre es ${this.nombre}`
+  }
+}
+
+console.log(persona.presentarse()) // ¡Hola! Mi nombre es Isabel
+```
+- *Si el valor de una propiedad es una función, se denomina "método"*
+- El this se usa para referirse al objeto donde está
+
+Hay una forma más concisa con ES6
+```js
+const persona = {
+  nombre: "Isabel",
+  presentarse() {
+    return `¡Hola! Mi nombre es ${this.nombre}`
+  }
+}
+
+console.log(persona.presentarse()) // ¡Hola! Mi nombre es Isabel
+```
+ - *Quitamos los dos puntos y la palabra function a la propiedad presentarse*
+
+## Definir una clase
+Una clase es algo parecido a un plano de un edificio o de un objeto, que nos permite crear muchos objetos con la misma estructura, las mismas propiedades y la misma funcionalidad.
+
+Es una plano general que nos permite escribir código una sola vez y reutilizarlo para crear tantos objetos como necesitemos 
+```js
+class TransbordadorEspacial {
+  constructor(planeta) {
+    this.planeta = planeta
+  }
+}
+
+var zeus = new TransbordadorEspacial("Júpiter");
+console.log(zeus.planeta); // Júpiter
+
+var apolo = new TransbordadorEspacial("Marte");
+console.log(apolo.planeta); // Marte
+```
+- *El código utiliza la sintaxis de las clases en JavaScript. Una clase es como una plantilla que te ayuda a crear objetos con propiedades y métodos similares.*
+
+  *En este caso, la clase se llama TransbordadorEspacial. Tiene un constructor, que es una función especial que se llama cuando se crea una nueva instancia de la clase. El constructor toma un parámetro llamado planeta, que se usa para asignar un valor a la propiedad planeta de la instancia.*
+
+  *La palabra clave this se utiliza para hacer referencia a la instancia del objeto actual. En este caso, se utiliza para asignar el valor del parámetro planeta a la propiedad planeta de la instancia.*
+
+  *La palabra clave new se utiliza para crear una nueva instancia de la clase. Cuando se llama a new TransbordadorEspacial("Júpiter"), se crea una nueva instancia de la clase TransbordadorEspacial con el parámetro planeta establecido en "Júpiter". Esto se guarda en la variable zeus.*
+
+  *De manera similar, cuando se llama a new TransbordadorEspacial("Marte"), se crea otra nueva instancia de la clase TransbordadorEspacial con el parámetro planeta establecido en "Marte". Esto se guarda en la variable apolo.*
+
+  *Luego, cuando se utiliza console.log(zeus.planeta) o console.log(apolo.planeta), se accede a la propiedad planeta de cada instancia del objeto y se imprime en la consola el valor de esta propiedad para cada instancia.*
+
+  *En resumen, la clase TransbordadorEspacial es una plantilla que te ayuda a crear objetos con propiedades y métodos similares. El constructor es una función especial que se utiliza para asignar valores a las propiedades de una nueva instancia de la clase. La palabra clave this se utiliza para hacer referencia a la instancia actual del objeto. La palabra clave new se utiliza para crear una nueva instancia de la clase.*
+
+**Otro ejemplo**
+```js
+class Mascota {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad
+  }
+}
+
+var miMascota = new Mascota("Nora", 5)
+
+console.log(miMascota.nombre) // Nora
+console.log(miMascota.edad) // 5
+```
+Podemos reutilizar el código para crear cuantos objetos necesitemos
+```js
+var tuMascota = new Mascota("Gino", 2)
+
+console.log(tuMascota.nombre) // Gino
+console.log(tuMascota.edad) // 2
+```
+### Getters y Setters
+Los getters y setters son métodos especiales que se utilizan para acceder y modificar las propiedades de un objeto de una manera controlada. Los getters se utilizan para obtener el valor de una propiedad, mientras que los setters se utilizan para establecer el valor de una propiedad. Los getters y setters se definen utilizando las palabras clave get y set, respectivamente.
+
+Por convención se coloca un guión bajo `_` para decir que es una propiedad privada y que no se debe cambiar. Solo se debe usar internamente dentro de la clase. Esto es para otros desarrolladores
+```js
+class Libro {
+  constructor(autor) {
+    this._autor = autor;
+  }
+
+  get autor() {
+    return this._autor;
+  }
+
+  set autor(nuevoAutor) {
+    this._autor = nuevoAutor;
+  }
+}
+
+const libro = new Libro("anónimo");
+console.log(libro.autor) // anónimo
+
+// Luego cambiamos el valor
+libro.autor = "Gino Smith";
+console.log(libro.autor);
+```
+- *El código define una clase llamada "Libro". La clase tiene un constructor que toma un parámetro llamado "autor". El constructor inicializa una propiedad privada llamada "_autor" con el valor del parámetro "autor".*
+
+  *Luego, la clase tiene un getter y un setter para la propiedad "autor". El getter devuelve el valor de la propiedad privada "_autor", mientras que el setter establece el valor de "_autor" en el valor proporcionado como argumento.*
+
+  *Después, se crea una instancia de la clase "Libro" con el valor "anónimo" para el autor, y se muestra en la consola el valor del autor, que es "anónimo".*
+
+  *Luego, se establece un nuevo valor para el autor usando el setter, y se muestra en la consola el nuevo valor del autor, que es "Gino Smith".*
